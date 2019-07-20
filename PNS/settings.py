@@ -31,6 +31,7 @@ ALLOWED_HOSTS = [
     'localhost',
     '178.128.168.127',
     'pnsuk.org',
+    'www.pnsuk.org',
 ]
 
 
