@@ -1,0 +1,60 @@
+{% load static from staticfiles %}
+<div class="navbar">    
+    <ul class="nav">
+        <li class="nav-item active">
+            <a class="nav-item-link" href="/"><b>Home</b> <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="">
+            <a class="nav-item-link" href="/news"><b>News</b></a>
+        </li>
+        <li class="">
+            <a class="nav-item-link" href="/events"><b>Events</b></a>
+        </li>
+        <li class="dropdown">
+            <a class="nav-item-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <b>Projects</b>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/project1">Language Learning</a>
+                <a class="dropdown-item" href="/project2">Community Support</a>
+                <a class="dropdown-item" href="/project3">Disaster Relief</a>
+                <a class="dropdown-item" href="#">Other</a>
+
+
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-item-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <b>Committes</b>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/members">Trustee Board</a>
+                <a class="dropdown-item" href="/members/committee">Management Committee</a>
+                <a class="dropdown-item" href="/members/advisory">Advisory Body</a>
+                <a class="dropdown-item" href="{% static 'docs/membership-form.pdf' %}">Membership Form</a>
+
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-item-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <b>About Us</b>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% static 'docs/constitution.pdf' %}">Constitution</a>
+                <a class="dropdown-item" href="{% static 'docs/PNS_glance.pdf' %}">PNS at a Glance</a>
+                <a class="dropdown-item" href="{% static 'docs/PNS_glance.pdf' %}">Policy Document</a>
+
+            </div>
+        <li class="nav-item">
+            <a class="nav-item-link" href="/advertise"><b>Advertise</b></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-item-link" href="/feedback"><b>Contact Us</b></a>
+        </li>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-light my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </ul>
+</div>
+

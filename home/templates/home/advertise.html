@@ -1,0 +1,76 @@
+<style>
+    div.member-item{
+        background-color: whitesmoke;
+        margin: 10px 20px;
+        padding: 10px;
+        width: 200px;
+        height: 200px;
+        text-align: center;
+    }
+    img.member-item-img{
+        width: 100px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px; 
+
+    }
+    div.advert-infomation{
+        padding: 10px;
+    }
+</style>
+
+{% extends 'home/base.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+    <div class="jumbotron jumbotron-fluid">
+        <div class="content-container">
+        <h1 class="display-4">What can we offer?</h1>
+        <p class="lead">
+                http://peterboroughnepalesesociety.co.uk/ - an online Nepalese Community website can give you the opportunity to promote your business to thousands of users each month. Attracting more than on average 35,000 hits (oct 2014 via awstats) each day, we can offer you a variety of banner styles and pages to choose from. We can offer you static or animated banners in 3 different schemes, all competitively priced. Choose from these banners within the site and make sure your banner is seen by thousands of users with a keen interest in all things Nepalese. Costs are dependent on the size of your banner and the exposure you would like your banner to enjoy on the nepalisamajuk.com website.</p>
+        </div>
+    </div>
+    <div class="advert-infomation row">
+        <div class="col-9">
+            <p><b>AD Scheme 1</b>
+                    <br>(available for commercial adverts only)
+                    <br>Size: 130pixels by 130pixels 
+                    <br>Price: £25.00 per month (minimum 3 months)
+                    
+                    <br> <br>It can be linked to your preferred page or website.
+                    
+                    <br>Banners will be placed at the left-hand side of the homepage. Banners are automatically rotated.</p>
+        </div>
+        <div class="col">
+            <img src="http://www.nepalisamajuk.com/misc/adterms/130_130.gif">
+        </div>
+    </div>
+    <div class="advert-infomation row">
+        <div class="col-9">
+            <p><b>AD Scheme 2</b>
+                <br>(available for Events/Programs only)
+                <br>Size: 180pixels by 160pixels
+                
+                <br>Price: £45.00 for 15 - 31 days
+                <br>Price: £30.00 for 1 - 14 days
+                
+                <br><br>It can be linked to your preferred page/website or event details page. 
+                
+                <br>Banners are automatically scrolled based on the nearest event date to farthest.
+            </div>
+        <div class="col">
+            <img src="http://www.nepalisamajuk.com/misc/adterms/200_174.gif">
+        </div>
+    </div>
+    <div class="row">
+    {% for member in members %}
+        <div class="member-item">
+            <img class="member-item-img" src="{% static 'pics/user.svg' %}">
+            <h5>{{member.forename}} {{member.surname}}</h5>
+            <p>{{member.role}}</p>
+        </div>
+    {% endfor %}
+    
+    </div>
+{% endblock %}

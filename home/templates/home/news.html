@@ -1,0 +1,37 @@
+<style>
+    div.article-item{
+        margin: 10px 50px;
+        padding: 10px;
+    }
+    div.article-item:hover{
+        cursor: pointer;
+        background-color: whitesmoke;
+    }
+    p.article-date{
+        margin: 20px 20px 5px;
+    }
+</style>
+<script>
+    function openArticle(id){
+        location.href = "/article/"+id+"/";
+    }
+</script>
+{% extends 'home/base.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+    {% for article in articles %}
+        <p class="article-date">{{article.date}}</p>
+        <div class="row article-item" onclick="openArticle({{article.id}})">
+            <div class="col-3">
+                {% with 'pics/'|add:article.image as imagePath %}
+                <img class="news-img" src="{% static imagePath %}">
+                {% endwith %}
+            </div>
+            <div class="col">
+                <h5>{{article.title}} </h5>
+                <p>{{article.text | truncatechars:200}}</p>        
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,40 @@
+<style>
+    div.member-item{
+        background-color: whitesmoke;
+        margin: 10px 20px;
+        padding: 10px;
+        width: 200px;
+        height: 250px;
+        text-align: center;
+    }
+    img.member-item-img{
+        width: 100px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px; 
+
+    }
+</style>
+
+{% extends 'home/base.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+    <div class="jumbotron jumbotron-fluid">
+        <div class="content-container">
+        <h1 class="display-4">Meet our management</h1>
+        <p class="lead">At PNS we aim to enrich the daily lives of all nepali living in peterborough and beyond.</p>
+        </div>
+    </div>
+    <div class="row">
+    {% for member in members %}
+        <div class="member-item">
+            <img class="member-item-img" src="{{member.img}}">
+            <h5>{{member.forename}} {{member.surname}}</h5>
+            <p>{{member.role}}</p>
+        </div>
+    {% endfor %}
+    
+    </div>
+{% endblock %}
