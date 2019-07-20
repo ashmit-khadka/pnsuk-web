@@ -28,7 +28,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'pns-web.herokuapp.com',
-    'localhost'
+    'localhost',
+    '178.128.168.127',
+    'pnsuk.org',
 ]
 
 
