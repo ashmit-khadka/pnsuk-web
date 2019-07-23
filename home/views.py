@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from home.models import Article
+from home.models import *
 from advert.models import Advert
 
 # Create your views here.
@@ -34,8 +34,11 @@ def feedback(request):
     return render(request, 'home/feedback.html')
 
 def events(request):
-    
-    return render(request, 'home/events.html')
+    events = Event.objects.all()
+    context = {
+        'events' : events
+    }
+    return render(request, 'home/events.html', context)
 
 def advertise(request):
     

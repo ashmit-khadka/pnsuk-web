@@ -138,3 +138,12 @@ div.paragraph-container{
 div.navbar{
     background-color: rgb(187, 199, 233);
 }
+
+div.event-container{
+    padding: 10px;
+    margin: 30px 20px 20px;
+}
+
+div.event-container:hover{
+    background-color: whitesmoke;
+}

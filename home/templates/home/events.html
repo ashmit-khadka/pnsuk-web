@@ -8,4 +8,18 @@
     <p class="lead">This page is under construction. It will be live soon.</p>
     </div>
 </div>
+{% for event in events %}
+    <div class="row event-container">
+        <div class="col-3">
+            <img src="">
+        </div>
+        <div class="col">
+            <h3>{{event.name}}</h3>
+            <p>{{event.venue}}</p>
+            <p>{{event.date}}</p>
+            <p>{{event.contact}}</p>
+            <p>{{event.venue}}</p>
+        </div>
+    </div>
+{% endfor %}
 {% endblock %}
