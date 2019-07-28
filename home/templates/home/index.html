@@ -13,7 +13,8 @@
 {% block content %}
 <div class="row">
     <div class="col-2">
-        {% for ad in advert %}
+        <p>Classified Ads</p>
+        {% for ad in advert %}        
         <div class="news-side" onclick="openAdvert('{{ad.url}}')">
             <img class="news-img" src="{{ad.img}}">
             <h5 class="news-title">{{ad.name}}</h5>
@@ -66,7 +67,7 @@
         <div class="info">
             <div class="const">
                 <h1>PNS at a glance</h1>
-                <p>The Peterborough Nepalese Society (PNS) is a non-profit making community based organisation established in 2007 with the initiation of all individuals or families originally coming from Nepal and those who are living in and around Peterborough areas. PNS is now a charity organisation registered in the Charity Commission of England and Wales (Charity number 1169904) and is running successfully based on the rules and regulations as outlined in its own governing document- Peterborough Nepalese Society Constitution 2016. 
+                <p class="lead">The Peterborough Nepalese Society (PNS) is a non-profit making community based organisation established in 2007 with the initiation of all individuals or families originally coming from Nepal and those who are living in and around Peterborough areas. PNS is now a charity organisation registered in the Charity Commission of England and Wales (Charity number 1169904) and is running successfully based on the rules and regulations as outlined in its own governing document- Peterborough Nepalese Society Constitution 2016. 
                         PNS, based in Peterborough, (Cambridgeshire) always focuses its efforts on social cohesion and integration with British culture and values and develops a sustainable peace and harmony in and among the communities.
                         </p>
             </div>
@@ -148,15 +149,14 @@
         </div>                 
     </div>
     <div class="col-2">
-        <div class="action-side" onclick="location.href='#';">
+        <div class="action-side" data-toggle="modal" data-target="#exampleModal">
             <img class="action-img" src="{% static 'pics/donate.svg' %}">
             <h3 class="action-title">Donate to our charity</h3>
         </div>
         {% for article in articles %}
         <div class="news-side" onclick="openArticle({{article.id}})">
-            {% with 'pics/'|add:article.image as imagePath %}
-            <img class="news-img" src="{% static imagePath %}">
-            {% endwith %}
+            
+            <img class="news-img" src="{{article.picture.url}}">
             <p>{{article.date}}</p>
 
             <h5 class="news-title">{{article.title}}</h5>

@@ -24,13 +24,11 @@
         <p class="article-date">{{article.date}}</p>
         <div class="row article-item" onclick="openArticle({{article.id}})">
             <div class="col-3">
-                {% with 'pics/'|add:article.image as imagePath %}
-                <img class="news-img" src="{% static imagePath %}">
-                {% endwith %}
+                <img class="news-img" src="{{article.picture.url}} ">
             </div>
             <div class="col">
-                <h5>{{article.title}} </h5>
-                <p>{{article.text | truncatechars:200}}</p>        
+                <h5 class="">{{article.title}} </h5>
+                <p class="lead">{{article.text | truncatechars:200}}</p>        
             </div>
         </div>
     {% endfor %}

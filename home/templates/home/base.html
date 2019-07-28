@@ -3,7 +3,7 @@
     <head>        
         <meta charset="UTF-8">
         <title>
-            PNS | {% block title %} {% endblock %}
+            PNS {% block title %} {% endblock %}
         </title>
         <meta name="description" content="{% block description %} {% endblock %}">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -16,9 +16,41 @@
     <body>
         <!--         <div class="main-header" style="background-image: url({% static 'pics/banner.png' %})">-->
         <div class="page-header">
-            <div class="page-header-content page-container">
-                <img class="headerImg" src="{% static 'pics/logo.png' %}" alt="">
+            <div class="page-header-content page-container">                
+                <a href="https://www.facebook.com/pnspeterborughuk/"><img class="header-logo" src="{% static 'pics/logo-facebook.svg' %}" alt=""></a>
+                <a><img class="header-logo" src="{% static 'pics/logo-twitter.svg' %}" alt=""></a>
+                <img class="header-logo" data-toggle="modal" data-target="#exampleModal" src="{% static 'pics/donate.svg' %}" alt="">
+                <div class="header-banner">
+                    <img class="header-flag-left" src="{% static 'pics/flag-nepal.svg' %}" alt=""> 
+                    <h1 class=""> Peterborough Nepalese Society (PNS) </h1>
+                    <h4 class="header-title">Registered Charity 1169904</h4>
+                    <img class="header-flag-right" src="{% static 'pics/flag-uk.svg' %}" alt="">
+                </div>
+
                 {% include 'home/nav.html' %}        
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Please Donate Here</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Account Name: PNS</p>
+                        <p>Bank: TSB</p>
+                        <p>Sort code: 30-96-60</p>
+                        <p>Account Number: 00152108</p>
+                        <p>Thank you for your donation, every little helps</p>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="page-container">

@@ -31,18 +31,16 @@
         <div class="article">
             <h1>{{article.title}}</h1>
             <p>{{article.date}}</p>
-            {% with 'pics/'|add:article.image as imagePath %}
-            <img class="articleImg" src="{% static imagePath %}">
-            {% endwith %}
+            <img class="news-img" src="{{article.picture.url}} ">
+
             <p class="text">{{article.text}}</p>
         </div>
         <div class="row">
             {% load static from staticfiles %}
             {% for article in articles %}
                 <div class="news-container col" onclick="openArticle({{article.id}})">
-                    {% with 'pics/'|add:article.image as imagePath %}
-                    <img class="news-img" src="{% static imagePath %}">
-                    {% endwith %}
+                    <img class="news-img" src="{{article.picture.url}} ">
+
                     <h3 class="news-title">{{article.title}}</h3>
                     <p>{{article.date}}</p>
                     <p>{{article.text|truncatechars:250}}</p>

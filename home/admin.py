@@ -1,25 +1,33 @@
 from django.contrib import admin
-from django.contrib.auth.models import Group
-from django.urls import path
-from . import views
-from django.forms import TextInput, Textarea
-from django.db import models
-
-
 # Register your models here.
 from .models import Article
 from .models import Event
+from .models import Policy
+from django import forms
+ 
+ 
+class ArticleModelForm( forms.ModelForm ):
+    text = forms.CharField( widget=forms.Textarea )
+    class Meta:
+        model = Article
+        fields = '__all__'
+        
+ 
+class ArticleAdmin( admin.ModelAdmin ):
+    form = ArticleModelForm
 
-class articleAdmin(admin.ModelAdmin):
-    #change_list_template = 'admin/alter_main.html'
-    add_form_template = 'home/newArticle.html'
+class EventModelForm( forms.ModelForm ):
+    other = forms.CharField( widget=forms.Textarea )
+    class Meta:
+        model = Event
+        fields = '__all__'
+        
+ 
+class EventAdmin( admin.ModelAdmin ):
+    form = EventModelForm
 
-class YourModelAdmin(admin.ModelAdmin):
-    formfield_overrides = {
-        models.CharField: {'widget': TextInput(attrs={'size':'20'})},
-        models.TextField: {'widget': Textarea(attrs={'rows':4, 'cols':40})},
-    }
 
+admin.site.register(Article, ArticleAdmin)
+admin.site.register(Event, EventAdmin)
+admin.site.register(Policy)
 
-admin.site.register(Article)
-admin.site.register(Event, YourModelAdmin)

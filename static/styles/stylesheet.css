@@ -89,7 +89,7 @@ div.page-header{
     background-color: whitesmoke;
 }
 div.page-header-content{
-    
+    text-align:center;
 }
 div.page-header-content::after{
     background-color: black;
@@ -146,4 +146,38 @@ div.event-container{
 
 div.event-container:hover{
     background-color: whitesmoke;
+}
+
+img.event-img{
+    width: 75%;
+}
+img.header-logo{
+    margin-top: 20px;
+    margin-bottom: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: inline-block;
+    width: 50px;
+    cursor: pointer;
+}
+img.header-flag-left{
+    position: absolute;
+    top: 00px;
+    left: 100px;
+    width: 80px;
+}
+img.header-flag-right{
+    position: absolute;
+    top: 00px;
+    left: 950px;
+    width: 80px;
+}
+
+h4.header-title{
+    display: inline-block;
+    margin-bottom: 50px;
+
+}
+div.header-banner{
+    position: relative;
 }
