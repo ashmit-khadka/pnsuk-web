@@ -8,6 +8,7 @@
     <p class="lead">This page is under construction. It will be live soon.</p>
     </div>
 </div>
+{% if events %}
 {% for event in events %}
     <div class="row event-container">
         <div class="col-3">
@@ -22,4 +23,5 @@
         </div>
     </div>
 {% endfor %}
+{% endif %}
 {% endblock %}
