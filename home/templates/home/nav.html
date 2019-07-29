@@ -1,18 +1,17 @@
 {% load static from staticfiles %}
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(187, 199, 233);">
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+    <nav class="navbar-light"></nav>
+        <ul class="nav nav-bar ">
             <li class="nav-item active">
-                <a class="nav-link" href="/"><b>Home</b> <span class="sr-only">(current)</span></a>
+                <a class="nav-link nav-bar-link" href="/"><b>Home</b> <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/news"><b>News</b></a>
+                <a class="nav-link nav-bar-link" href="/news"><b>News</b></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/events"><b>Events</b></a>
+                <a class="nav-link nav-bar-link" href="/events"><b>Events</b></a>
             </li>
             <li class="dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link nav-bar-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <b>Projects</b>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -24,7 +23,7 @@
                 </div>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link nav-bar-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <b>Committes</b>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -36,7 +35,7 @@
                 </div>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link nav-bar-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <b>About Us</b>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -52,18 +51,18 @@
                 </ul>
             </li>            
             <li class="nav-item">
-                <a class="nav-link" href="/advertise"><b>Advertise</b></a>
+                <a class="nav-link nav-bar-link" href="/advertise"><b>Advertise</b></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/feedback"><b>Contact Us</b></a>
+                <a class="nav-link nav-bar-link" href="/feedback"><b>Contact Us</b></a>
             </li>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-light my-2 my-sm-0" type="submit">Search</button>
+            </form>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-light my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </div>
     </nav>
+
  <style>   
     .dropdown-submenu {
         position: relative;
@@ -81,6 +80,15 @@
         left: 100%;
         margin-left: .1rem;
         margin-right: .1rem;
+      }
+      ul.nav-bar{
+          background-color: rgb(187, 199, 233);
+          height: 60px;
+          margin-bottom: 10px;
+      }
+      a.nav-bar-link{
+          margin-top: 10px;
+          color: black;
       }
 </style>
 <script>

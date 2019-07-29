@@ -163,21 +163,28 @@ img.header-logo{
 img.header-flag-left{
     position: absolute;
     top: 00px;
-    left: 100px;
-    width: 80px;
+    left: 120px;
+    width: 90px;
 }
 img.header-flag-right{
     position: absolute;
     top: 00px;
-    left: 950px;
-    width: 80px;
+    left: 920px;
+    width: 90px;
 }
 
-h4.header-title{
+h1.header-title{
+    
+}
+
+h4.header-print{
     display: inline-block;
     margin-bottom: 50px;
+    font-size: 20px;
+    font-style: italic;
 
 }
+
 div.header-banner{
     position: relative;
 }

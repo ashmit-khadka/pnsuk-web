@@ -20,7 +20,7 @@
 {% load static from staticfiles %}
 
 {% block content %}
-    {% if article %}
+    {% if articles %}
     {% for article in articles %}
         <p class="article-date">{{article.date}}</p>
         <div class="row article-item" onclick="openArticle({{article.id}})">
