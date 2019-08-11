@@ -1,24 +1,30 @@
 from django.shortcuts import render
 from member.models import Member
 from member.models import Trustee
+from member.models import Advisor
 
 # Create your views here.
-def index(request):
+def trustees(request):
     trustee = Trustee.objects.all()
-    print(len(trustee))
     context = {
         'trustee' : trustee
     }
-    return render(request, 'member/members.html', context)
+    return render(request, 'member/trustees.html', context)
 
-def committee(request):
+def managment(request):
     members = Member.objects.all()
-    print(len(members))
     context = {
         'members' : members
     }
-    return render(request, 'member/committee.html', context)
+    return render(request, 'member/managment.html', context)
 
-def advisory(request):
+def advisors(request):
 
-    return render(request, 'member/advisory_board.html')
+    advisors = Advisor.objects.all()
+    context = {
+        'advisors' : advisors
+    }
+    return render(request, 'member/advisors.html', context)
+
+def membership(request):
+    return render(request, 'member/membership.html')

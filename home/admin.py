@@ -10,8 +10,11 @@ class ArticleModelForm( forms.ModelForm ):
     text = forms.CharField( widget=forms.Textarea )
     class Meta:
         model = Article
-        fields = '__all__'
-        
+        fields = '__all__'        
+
+    list_display = (
+        'title',
+        )  
  
 class ArticleAdmin( admin.ModelAdmin ):
     form = ArticleModelForm
@@ -25,6 +28,7 @@ class EventModelForm( forms.ModelForm ):
  
 class EventAdmin( admin.ModelAdmin ):
     form = EventModelForm
+
 
 
 admin.site.register(Article, ArticleAdmin)

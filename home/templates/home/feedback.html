@@ -1,29 +1,15 @@
 <style>
-    div.article-item{
-        margin: 10px 50px;
-        padding: 10px;
-    }
-    div.article-item:hover{
-        cursor: pointer;
-        background-color: whitesmoke;
-    }
-    p.article-date{
-        margin: 20px 20px 5px;
-    }
+
 </style>
-<script>
-    function openArticle(id){
-        location.href = "/article/"+id+"/";
-    }
-</script>
+
 {% extends 'home/base.html' %}
 {% load static from staticfiles %}
 
 
 {% block content %}
-    <div class="jumbotron jumbotron-fluid">
+    <div class="pager-info">
         <div class="content-container">
-        <h1 class="display-4">Leave a message</h1>
+        <h1>Leave a message</h1>
         <p class="lead">Your feedback is valued greatly and helps PNS better support you.</p>
         </div>
     </div>
@@ -54,16 +40,14 @@
         </div>
         <div class="col">
                 <br><b>Email</b>
-                
+                <br><a href="mailto:pnsuk.org@hotmail.co.uk">pnsuk.org@hotmail.co.uk</a>  (NEW)
                 <br><a href="mailto:peterborough-nepalisociety@hotmail.co.uk">peterborough-nepalisociety@hotmail.co.uk</a>
-                
+
                 
                 <br><br><b>Phone</b>
-                <br>Shiva Bhandari : 07462916936
-                <br>Kiran Karki : 07737085669
-
+                <br>Shiva Bhandari : 07462916936                
                 <br>Harihar Bhattarai : 07470163339
-                
+                <br><a href="/members/trustees">Click here to see our trustees</a>         
                 
                 
                 <br><br><b>Address</b>

@@ -21,18 +21,21 @@
 {% load static from staticfiles %}
 
 {% block content %}
-    <div class="jumbotron jumbotron-fluid">
+    <div class="pager-info">
         <div class="content-container">
-        <h1 class="display-4">Meet our management</h1>
-        <p class="lead">At PNS we aim to enrich the daily lives of all nepali living in peterborough and beyond.</p>
+        <h1>Meet our management</h1>
+        <p class="lead">At PNS we aim to enrich the daily lives of all members and communities living in peterborough and beyond.</p>
         </div>
     </div>
     <div class="row">
     {% for member in members %}
         <div class="member-item">
             <img class="member-item-img" src="{{member.img}}">
-            <h5>{{member.forename}} {{member.surname}}</h5>
+            <h5>{{member.name}}</h5>
             <p>{{member.role}}</p>
+            {% if member.phone != '0' %}
+                <p>{{member.phone}}</p>
+            {% endif %}
         </div>
     {% endfor %}
     

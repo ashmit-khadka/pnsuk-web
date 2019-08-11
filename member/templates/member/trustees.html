@@ -3,12 +3,12 @@
         background-color: whitesmoke;
         margin: 10px 20px;
         padding: 10px;
-        width: 200px;
-        height: 250px;
+        width: 220px;
+        height: 350px;
         text-align: center;
     }
     img.member-item-img{
-        width: 100px;
+        width: 150px;
         display: block;
         margin-left: auto;
         margin-right: auto;
@@ -21,9 +21,9 @@
 {% load static from staticfiles %}
 
 {% block content %}
-    <div class="jumbotron jumbotron-fluid">
+    <div class="pager-info">
         <div class="content-container">
-        <h1 class="display-4">Meet our trustees</h1>
+        <h1>Meet our trustees</h1>
         <p class="lead">The trustee team at PNS are committed to drive the community forward into new heights.</p>
         </div>
     </div>
@@ -31,10 +31,10 @@
     {% for trust in trustee %}
         <div class="member-item">
             <img class="member-item-img" src="{{trust.img}}">
-            <h5>{{trust.forename}} {{trust.surname}}</h5>
+            <h5>{{trust.name}}</h5>
             <p>{{trust.role}}</p>
-            <p>{{trust.contact_tel}}</p>
-
+            <p>{{trust.email}}</p>
+            <p>{{trust.phone}}</p>
         </div>
     {% endfor %}
     

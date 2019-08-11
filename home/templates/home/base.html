@@ -15,7 +15,7 @@
     </head>
     <body>
         <!--         <div class="main-header" style="background-image: url({% static 'pics/banner.png' %})">-->
-        <div class="page-header">
+        <div class="" style="background-image: url({% static 'pics/interlaced.png' %})">
             <div class="page-header-content page-container">                
                 <a href="https://www.facebook.com/pnspeterborughuk/"><img class="header-logo" src="{% static 'pics/logo-facebook.svg' %}" alt=""></a>
                 <img class="header-logo" data-toggle="modal" data-target="#exampleModal" src="{% static 'pics/donate.svg' %}" alt="">
@@ -25,16 +25,16 @@
                     <h4 class="header-print">Registered Charity 1169904</h4>
                     <img class="header-flag-right" src="{% static 'pics/flag-uk.svg' %}" alt="">
                 </div>
-
                 {% include 'home/nav.html' %}        
             </div>
         </div>
+        
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Please Donate Here</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Please donate via this back account and email us at <a href="mailto:pnsuk.org@hotmail.co.uk">pnsuk.org@hotmail.co.uk</a></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -44,7 +44,7 @@
                         <p>Bank: TSB</p>
                         <p>Sort code: 30-96-60</p>
                         <p>Account Number: 00152108</p>
-                        <p>Thank you for your donation, every little helps</p>
+                        <p>Thank you for your donation, every little helps.</p>
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -52,12 +52,25 @@
                 </div>
             </div>
         </div>
-        <div class="page-container">
-            {% block content %}
-            {% endblock %}
-            <br>
-            {% include 'home/footer.html' %}
-
+        <div class="row page-container">
+            <div class="col">
+                {% block content %}
+                {% endblock %} 
+            </div>
+            <div class="col-2">
+                <p class="temp-classified-ads">Classified Ads</p>
+                {%if advert%}
+                {% for ad in advert %}        
+                <div class="news-side" onclick="openAdvert('{{ad.url}}')">
+                    <img class="news-img" src="{{ad.img}}">
+                    <h5 class="news-title">{{ad.name}}</h5>
+                    <p>{{ad.description}}</p>
+                </div>
+                {% endfor %}
+                {% endif %}                
+            </div>
+        <br>
+        {% include 'home/footer.html' %}
         </div>
     </body>
 </html>

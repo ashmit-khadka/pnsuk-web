@@ -7,23 +7,28 @@
     function openAdvert(url){
         window.open(url);
     }
+    function openLink(url){
+        location.href = url;
+    }
 </script>
 {% extends 'home/base.html' %}
 {% load static from staticfiles %}
 {% block content %}
 <div class="row">
     <div class="col-2">
-        <p class="temp-classified-ads">Classified Ads</p>
-        {%if advert%}
-        {% for ad in advert %}        
-        <div class="news-side" onclick="openAdvert('{{ad.url}}')">
-            <img class="news-img" src="{{ad.img}}">
-            <h5 class="news-title">{{ad.name}}</h5>
-            <p>{{ad.description}}</p>
+        <div class="action-side" data-toggle="modal" data-target="#exampleModal">
+            <img class="action-img" src="{% static 'pics/donate.svg' %}">
+            <h3 class="action-title">Donate to our charity</h3>
+        </div>
+        {% if articles %}
+        {% for article in articles %}
+        <div class="news-side" onclick="openArticle({{article.id}})">            
+            <img class="news-img" src="{{article.picture.url}}">
+            <p>{{article.date}}</p>
+            <h5 class="news-title">{{article.title}}</h5>
         </div>
         {% endfor %}
         {% endif %}
-        
     </div>
     <div class="col">
         <div class="bd-example">
@@ -79,7 +84,7 @@
             <div class="card">
                 <div class="card-header" id="headingOne">
                 <h2 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                         Goals and objectives
                     </button>
                 </h2>
@@ -96,7 +101,7 @@
             <div class="card">
                 <div class="card-header" id="headingTwo">
                 <h2 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                         Objectives
                     </button>
                 </h2>
@@ -113,7 +118,7 @@
             <div class="card">
                 <div class="card-header" id="headingThree">
                 <h2 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                         Organisational set up of PNS
                     </button>
                 </h2>
@@ -133,7 +138,7 @@
                 <div class="card">
                     <div class="card-header" id="headingFour">
                     <h2 class="mb-0">
-                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                             Nepal at a Glance
                         </button>
                     </h2>
@@ -148,25 +153,36 @@
                     </div>
                 </div>
             </div> 
-        </div>                 
-    </div>
-    <div class="col-2">
-        <div class="action-side" data-toggle="modal" data-target="#exampleModal">
-            <img class="action-img" src="{% static 'pics/donate.svg' %}">
-            <h3 class="action-title">Donate to our charity</h3>
         </div>
-        {% if articles %}
-        {% for article in articles %}
-        <div class="news-side" onclick="openArticle({{article.id}})">
-            
-            <img class="news-img" src="{{article.picture.url}}">
-            <p>{{article.date}}</p>
+        <h3 class="home-event-header">Upcomming events</h3>
+        <div class="row">            
+            {% for event in events %}
+            <div class="col home-event-container" onclick="openLink('/events')">  
+                <div class="event-ribbon">
+                </div>
+                <h4>{{event.name}}</h4>
+                <img class="event-info-icon" src="{% static 'pics/placeholder.svg' %}" alt="">
+                <p>{{event.venue}}</p>
+                <img class="event-info-icon" src="{% static 'pics/calendar.svg' %}" alt="">
+                <p>{{event.date}}</p>         
+            </div>
+            {% endfor %}
+        </div>
+        <h3 class="home-event-header">Latest news</h3>
+        <div class="row">            
+            {% for article in articles %}
+            <div class="col home-event-container" onclick="openArticle({{article.id}})">
+                <div class="article-ribbon">                
+                </div>
+                <h4>{{article.title}}</h4>
+                <p>{{article.date}}</p>               
+            </div>
+            {% endfor %}
+        </div>
+        <h3 class="home-event-header">Our projects</h3>
 
-            <h5 class="news-title">{{article.title}}</h5>
-        </div>
-        {% endfor %}
-        {% endif %}
     </div>
 </div>
+
 
 {% endblock %}
