@@ -7,8 +7,10 @@ urlpatterns = [
     path('news/', views.news),
     path('feedback/', views.feedback),
     path('events/', views.events),
+    path('events-past/', views.events_past),
     path('advertise/', views.advertise),
-    path('project1/', views.project1),
-    path('project2/', views.project2),
-    path('project3/', views.project3),
+    path('project/<id>/', views.openProject),
+    path('event/<id>/', views.openEvent),   
+    path('guests/', views.guests),    
+ 
 ]

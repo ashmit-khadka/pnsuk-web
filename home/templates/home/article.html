@@ -1,5 +1,6 @@
 {% extends 'home/base.html' %}
 {% load static from staticfiles %}
+{% block title %}{{ article.title }}{% endblock %}
 {% block content %}
 <style>
     div.article-container
@@ -17,6 +18,7 @@
         display: block;
         margin-left: auto;
         margin-right: auto;
+        margin-bottom: 30px;
         width: 100%;
     }
     p.text{
@@ -34,39 +36,32 @@
     img.article-latest-img{
         width: 100%
     }
-    p.article-latest-title{
-        margin-top: 50px;
+    h5.article-latest-title{
+        margin-top: 100px;
     }
 </style>
 <script>
     function openArticle(id){
         location.href = "/article/"+id+"/";
     }
-</script>
-
-<div class="row article-container">
-    <div class="col">        
-        <div class="article">
-            <h1>{{article.title}}</h1>
-            <p>{{article.date}}</p>
-            <img class="news-img" src="{{article.picture.url}} ">
-            <p class="text">{{article.text}}</p>
-        </div>
-        <div class="row">
-
-        </div>
+</script>     
+    <div class="article">
+        <h1>{{article.title}}</h1>
+        <p class="font-italic">{{article.date}}</p>
+        <img class="articleImg" src="{{article.picture.url}} ">
+        <p class="">{{article.text}}</p>
     </div>
-    <div class="col-3">
-        <p class="article-latest-title">Read the lastest</p>
+
+    <h5 class="article-latest-title">Read the lastest</h5>
+    <div class="row">
         {% load static from staticfiles %}
         {% for article in articles %}
-            <div class="article-latest row" onclick="openArticle({{article.id}})">
+            <div class="page-element col" onclick="openArticle({{article.id}})">
                 <img class="article-latest-img" src="{{article.picture.url}} ">
                 <h4 class="news-title">{{article.title}}</h4>
                 <p>{{article.text|truncatechars:100}}</p>
             </div>
         {% endfor %}
     </div>
-</div>  
 {% endblock %}
 

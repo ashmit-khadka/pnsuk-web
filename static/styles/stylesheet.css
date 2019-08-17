@@ -67,7 +67,9 @@ h3.action-title{
     font-size: 20px;
 }
 div.news-side{
-    padding: 10px 0px;
+    transition: background-color 0.25s ease;
+
+    padding: 10px;
     margin: 10px 0px;
     text-align: left;
 }
@@ -234,6 +236,17 @@ div.article-ribbon
 
 }
 
+
+div.project-ribbon
+{    
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 50px 50px 0 0;
+    border-color: #42de6c transparent transparent transparent;
+
+}
+
 h3.home-event-header{
     margin: 40px 10px 20px;
 }
@@ -253,4 +266,20 @@ div.membership-form-container
     width: 700px;
     margin-left: auto;
     margin-right: auto;
+}
+
+div.page-element
+{
+    transition: background-color 0.2s ease;
+    transition: box-shadow 0.2s ease;
+    margin: 10px 0px;
+    padding: 20px;
+}
+
+div.page-element:hover
+{
+    cursor: pointer;
+    background-color: rgb(252, 252, 252);
+    box-shadow: 0 4px 8px 0 rgba(212, 212, 212, 0.2), 0 15px 15px 0 rgba(138, 138, 138, 0.19);
+
 }

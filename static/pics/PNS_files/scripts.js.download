@@ -1,0 +1,24 @@
+function openArticle(id)
+{
+    location.href = "/article/"+id+"/";
+}
+
+function openAdvert(url)
+{
+    window.open(url);
+}
+
+function openProject(id)
+{
+    location.href = "/project/"+id+"/";
+}
+
+function openLink(url)
+{
+    location.href = url;
+}
+
+function openEvent(id)
+{
+    location.href = "/event/"+id+"/";
+}

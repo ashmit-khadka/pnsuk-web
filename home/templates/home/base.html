@@ -1,16 +1,17 @@
+{% load static from staticfiles %}
 <!DOCTYPE html>
 <html>
     <head>        
         <meta charset="UTF-8">
         <title>
-            PNS {% block title %} {% endblock %}
+            PNS | {% block title %} {% endblock %}
         </title>
         <meta name="description" content="{% block description %} {% endblock %}">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        {% load static from staticfiles %}
+        <script src="{% static 'scripts/scripts.js' %}"></script>
         <link rel="stylesheet" type="text/css" href="{% static 'styles/stylesheet.css' %}">
     </head>
     <body>
@@ -57,14 +58,18 @@
                 {% block content %}
                 {% endblock %} 
             </div>
+
             <div class="col-2">
-                <p class="temp-classified-ads">Classified Ads</p>
-                {%if advert%}
-                {% for ad in advert %}        
+                <div class="news-side" onclick="openAdvert('/advertise')"> 
+                    <h5 class="news-title">Advertise here</h5>
+                    <p>Promote you business on the official PNS website! Click to learn more</p>
+                </div>
+                {%if adverts%}
+                {% for ad in adverts %}        
                 <div class="news-side" onclick="openAdvert('{{ad.url}}')">
                     <img class="news-img" src="{{ad.img}}">
                     <h5 class="news-title">{{ad.name}}</h5>
-                    <p>{{ad.description}}</p>
+                    <p class="font-weight-light">{{ad.description}}</p>
                 </div>
                 {% endfor %}
                 {% endif %}                

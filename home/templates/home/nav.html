@@ -7,21 +7,31 @@
             <li class="nav-item">
                 <a class="nav-link nav-bar-link" href="/news"><b>News</b></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link nav-bar-link" href="/events"><b>Events</b></a>
-            </li>
-            <li class="dropdown">
+            <li class="nav-item dropdown">
                 <a class="nav-link nav-bar-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <b>Projects</b>
+                    <b>Events</b>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/project1">Language Learning</a>
-                    <a class="dropdown-item" href="/project2">Community Support</a>
-                    <a class="dropdown-item" href="/project3">Disaster Relief</a>
-                    <a class="dropdown-item" href="#">Other</a>
-
+                    <a class="dropdown-item" href="/events">Upcoming</a>
+                    <a class="dropdown-item" href="/events-past">Past</a>
                 </div>
             </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link nav-bar-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <b>Projects</b>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    {% for key, value in nav_item_projects.items %}
+                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">{{key}}</a>
+                        <ul class="dropdown-menu">
+                            {% for project in value %}
+                                <li><a class="dropdown-item" href="/project/{{project.id}}">{{project.title}}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>   
             <li class="nav-item dropdown">
                 <a class="nav-link nav-bar-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <b>Committes</b>
@@ -82,7 +92,7 @@
         margin-right: .1rem;
       }
       ul.nav-bar{
-          background-color: #c5cae9  ;
+          background-color: #bec9df  ;
           height: 60px;
           margin-bottom: 10px;
       }
@@ -91,7 +101,7 @@
           color: black;
       }
       input.page-search{
-        margin-left: 200px;
+        margin-left: 180px;
       }
 </style>
 <script>
