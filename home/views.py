@@ -47,12 +47,21 @@ def index(request):
         ORDER BY home_project.DATE DESC
         """
     ))
-
+    event_past = Event_Past.objects.raw(
+    """
+    SELECT *
+    FROM home_event_past    
+    ORDER BY home_event_past.date DESC
+    LIMIT 1
+    """
+    )
+    print(event_past[0].text)
     context = {
         'front_items' : front_items,
         'articles' : articles,
         'events' : events,
         'projects' : projects,
+        'evnet_past' : event_past[0]
     }
     return render(request, 'home/index.html', context)
 
