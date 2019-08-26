@@ -30,7 +30,8 @@
     <div class="row">
     {% for trust in trustee %}
         <div class="member-item">
-            <img class="member-item-img" src="{{trust.img}}">
+            <img class="member-item-img" src="
+            {% if trust.picture %}{{trust.picture.url}}{% else %}{{trust.img}}{% endif %}">
             <h5>{{trust.name}}</h5>
             <p>{{trust.role}}</p>
             <p>{{trust.email}}</p>

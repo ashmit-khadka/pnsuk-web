@@ -30,7 +30,8 @@
     <div class="row">
     {% for member in members %}
         <div class="member-item">
-            <img class="member-item-img" src="{{member.img}}">
+            <img class="member-item-img" src="
+            {% if member.picture %}{{member.picture.url}}{% else %}{{member.img}}{% endif %}">
             <h5>{{member.name}}</h5>
             <p>{{member.role}}</p>
             {% if member.phone != '0' %}

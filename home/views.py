@@ -61,7 +61,7 @@ def index(request):
         'articles' : articles,
         'events' : events,
         'projects' : projects,
-        'evnet_past' : event_past[0]
+        'event_past' : event_past[0]
     }
     return render(request, 'home/index.html', context)
 
