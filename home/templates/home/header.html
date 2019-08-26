@@ -1,15 +1,35 @@
 {% load static from staticfiles %}
-<div class="" style="background-image: url({% static 'pics/interlaced.png' %})">
-    <div class="page-header-content page-container">                
-        <a href="https://www.facebook.com/pnspeterborughuk/"><img class="header-logo" src="{% static 'pics/logo-facebook.svg' %}" alt=""></a>
-        <img class="header-logo" data-toggle="modal" data-target="#exampleModal" src="{% static 'pics/donate.svg' %}" alt="">
-        <div class="header-banner">
-            <img class="header-flag-left" src="{% static 'pics/flag-nepal.svg' %}" alt=""> 
-            <h1 class="header-title"> PNSUK </h1>
-            <h4 class="header-print">Peterborough Nepalese Society</h4>
-            <h4 class="header-print">Registered Charity 1169904</h4>
-            <img class="header-flag-right" src="{% static 'pics/flag-uk.svg' %}" alt="">
+<div class="page-banner" style="background-color: whitesmoke">
+    <div class="row page-header-content page-container" >
+        <div class="col-3 ">                
+            <div class="header-banner">
+                <img class="test" src="{% static 'pics/logo.png' %}" alt="">
+            </div>
         </div>
-        {% include 'home/nav.html' %}        
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <a href="https://www.facebook.com/pnspeterborughuk/"><img class="header-logo" src="{% static 'pics/logo-facebook.svg' %}" alt=""></a>
+                    <img class="header-logo" data-toggle="modal" data-target="#exampleModal" src="{% static 'pics/donate.svg' %}" alt="">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {% include 'home/nav.html' %}   
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+<style>
+    .test
+    {
+        position: relative;
+        left: 00px;
+        width: 200px;
+    }
+    .page-banner
+    {
+        margin-bottom: 1rem;
+    }
+</style>

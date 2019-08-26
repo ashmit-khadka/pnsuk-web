@@ -2,43 +2,13 @@
 {% load static from staticfiles %}
 {% block title %} Past Events {% endblock %}
 {% block content %}
-<div class="pager-info">
+<div class="page-info">
     <div class="content-container">
     <h1 class="">Events</h1>
     <p class="lead">Our past meetings, parties and gatherings.</p>
     </div>
 </div>
-{% if events %}
-{% for event in events %}
-    <!--<div class="row event-container">
-        <div class="col-3 event-date">
-            <div class="event-ribbon">
-            </div>
-            <p>{{event.date|date:"F"}} {{event.date|date:"jS"}}</p>
-            <p>{{event.date|date:"l"}}</p>
-            <p>{{event.date|date:"fA"}}</p>
-        </div>
-        <div class="col-9">
-            <h3>{{event.name}}</h3>
-            <img class="event-info-icon" src="{% static 'pics/placeholder.svg' %}" alt="">
-            <p>{{event.venue}}</p>
-            <img class="event-info-icon" src="{% static 'pics/contact.svg' %}" alt="">
-            <p>{{event.contact}}</p>
-            <p class="font-weight-light">{{event.other}}</p>
-            <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#collapse{{event.id}}" aria-expanded="false" aria-controls="collapseExample">
-                    View agenda
-            </button>
-        </div>        
-        <div class="col collapse" id="collapse{{event.id}}">
-            <br>           
-            <div class="card card-body">
-
-            </div>
-        </div>
-    </div>-->
-{% endfor %}
-{% endif %}
-<p class="text-right font-italic">Showing articles {{events_past | length}} of {{events_past | length}}</p>
+<p class="text-right font-italic">Showing events {{events_past | length}} of {{events_past | length}}</p>
 {% for event in events_past %}
     <!--<p class="article-date">{{article.date}}</p>-->
     <div class="row page-element" onclick="openEvent({{event.id}})">

@@ -31,6 +31,11 @@ class EventModelForm( forms.ModelForm ):
  
 class EventAdmin( admin.ModelAdmin ):
     form = EventModelForm
+    list_display = (
+        'name',
+        'date',
+        'venue',
+        )
 
 class ProjectModelForm( forms.ModelForm ):
     text = forms.CharField( widget=forms.Textarea )
@@ -46,6 +51,10 @@ class ProjectAdmin( admin.ModelAdmin ):
         'home',
         )  
 
+class PolicyAdmin( admin.ModelAdmin ):
+    list_display = (
+        'name',
+        )
 class Event_PastModelForm( forms.ModelForm ):
     text = forms.CharField( widget=forms.Textarea )
     class Meta:
@@ -74,9 +83,11 @@ class GuestAdmin( admin.ModelAdmin ):
         'home',
         )
 
+    
+
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Event, EventAdmin)
-admin.site.register(Policy)
+admin.site.register(Policy, PolicyAdmin)
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(Event_Past, Event_PastAdmin)
 admin.site.register(Guest, GuestAdmin)
