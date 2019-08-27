@@ -1,6 +1,6 @@
 {% load static from staticfiles %}
-    <nav class="navbar-light"></nav>
-        <ul class="nav nav-bar ">
+    <nav class="navbar navbar-dark bg-dark page-navbar">
+        <ul class="nav nav-bar page-container">
             <li class="nav-item active">
                 <a class="nav-link nav-bar-link" href="/"><b>Home</b> <span class="sr-only">(current)</span></a>
             </li>
@@ -66,7 +66,10 @@
             <li class="nav-item">
                 <a class="nav-link nav-bar-link" href="/feedback"><b>Contact Us</b></a>
             </li>
-
+            <form class="form-inline my-2 my-lg-0">
+                <input class="page-search form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-light my-2 my-sm-0" type="submit">Search</button>
+            </form>
         </ul>
     </nav>
 
@@ -89,16 +92,21 @@
         margin-right: .1rem;
       }
       ul.nav-bar{
-          height: 60px;
+          height: 40px;
           margin-bottom: 10px;
       }
       a.nav-bar-link{
-          margin-top: 10px;
-          color: black;
+          margin-top: 5px;
+          color: whitesmoke;
       }
       input.page-search{
         margin-left: 180px;
       }
+
+      nav.page-navbar
+        {
+            margin-bottom: 1rem;
+        }
 </style>
 <script>
     $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {

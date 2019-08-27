@@ -90,8 +90,10 @@
                 <div class="info" data-target="#collapseExample">
                     <div class="const">
                         <h4 class="">PNS at a glance</h4>
-                        <p class="lead">The Peterborough Nepalese Society (PNS) is a non-profit making community based organisation established in 2007 with the initiation of all individuals or families originally coming from Nepal and those who are living in and around Peterborough areas. PNS is now a charity organisation registered in the Charity Commission of England and Wales (Charity number 1169904) and is running successfully based on the rules and regulations as outlined in its own governing document- Peterborough Nepalese Society Constitution 2016. 
-                            PNS, based in Peterborough, (Cambridgeshire) always focuses its efforts on social cohesion and integration with British culture and values and develops a sustainable peace and harmony in and among the communities.
+                        <p class="font-weight-light">The Peterborough Nepalese Society (PNS) is a non-profit making community based organisation established in 2007 with the initiation of all individuals or families originally coming from Nepal and those who are living in and around Peterborough areas.
+                                PNS is now a charity organisation registered in the Charity Commission of England and Wales (Charity number 1169904) and is running successfully based on the rules and regulations as outlined in its own governing document- Peterborough Nepalese Society Constitution 2016. 
+                                PNS, based in Peterborough, (Cambridgeshire) always focuses its efforts on social cohesion and integration with British culture and values and develops a sustainable peace and harmony in and among the communities.
+
                         </p>
 
                     <button class="btn btn-outline-info" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -100,6 +102,8 @@
                     </p>
                     <div class="collapse" id="collapseExample">
                         <div class="accordion" id="accordionExample">
+                            <p>
+                            </p>
                             <div class="card">
                                 <div class="card-header" id="headingOne">
                                 <h2 class="mb-0">
@@ -185,6 +189,44 @@
             </div>
             <div class="row">
                 <div class="col">
+
+                    <h4 class="page-header">Latest in Our Community</h4>
+                    <hr>
+                    <div class="row">
+                        <div class="col item-container" onclick="openEvent({{event_past.id}})"> 
+                            <img class="event" src="{{event_past.picture.url}}">         
+                            <button type="button" class="btn btn-danger">#Event</button>
+
+                            <h5 class="">{{event_past.title}}</h5>
+                            <p>{{event_past.date}}</p>
+                            <p class="font-weight-light">{{event_past.text | truncatechars:250}}</p>
+                            <p class="">Read more</p>    
+                        </div>
+                        {% if articles %}
+                        {% for article in front_items|slice:":2" %}                        
+                        <div class="col item-container" onclick="openArticle({{article.id}})"> 
+                            <img class="event" src="{{article.picture.url}}">         
+                            <button type="button" class="btn btn-info">#News</button>
+
+                            <h5 class="">{{article.title}}</h5>
+                            <p>{{article.date}}</p>
+                            <p class="font-weight-light">{{article.text | truncatechars:250}}</p>
+                            <p class="">Read more</p>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        {% for article in projects|slice:":1" %}                        
+                        <div class="col item-container" onclick="openArticle({{article.id}})"> 
+                            <img class="event" src="{{article.picture.url}}">         
+                            <button type="button" class="btn btn-success">#Project</button>
+
+                            <h5 class="">{{article.title}}</h5>
+                            <p>{{article.date}}</p>
+                            <p class="font-weight-light">{{article.text | truncatechars:250}}</p>
+                            <p class="">Read more</p>
+                        </div>
+                        {% endfor %}
+                    </div>
                     <h3 class="page-header">Upcomming Events</h3>
                     <hr>
                     <div class="row">
@@ -203,41 +245,6 @@
                         </div>
                         {% endfor %}
                     </div>
-                    <h3 class="page-header">Latest in Our Community</h3>
-                    <hr>
-                    <div class="row">
-                        <div class="col item-container" onclick="openEvent({{event_past.id}})"> 
-                            <button type="button" class="btn btn-danger">#Event</button>
-                            <img class="event" src="{{event_past.picture.url}}">         
-                            <h5 class="">{{event_past.title}}</h5>
-                            <p>{{event_past.date}}</p>
-                            <p class="font-weight-light">{{event_past.text | truncatechars:250}}</p>
-                            <p class="">Read more</p>    
-                        </div>
-                        {% if articles %}
-                        {% for article in front_items|slice:":2" %}                        
-                        <div class="col item-container" onclick="openArticle({{article.id}})"> 
-                            <button type="button" class="btn btn-info">#News</button>
-                            <img class="event" src="{{article.picture.url}}">         
-                            <h5 class="">{{article.title}}</h5>
-                            <p>{{article.date}}</p>
-                            <p class="font-weight-light">{{article.text | truncatechars:250}}</p>
-                            <p class="">Read more</p>
-                        </div>
-                        {% endfor %}
-                        {% endif %}
-                        {% for article in projects|slice:":1" %}                        
-                        <div class="col item-container" onclick="openArticle({{article.id}})"> 
-                            <button type="button" class="btn btn-success">#Project</button>
-                            <img class="event" src="{{article.picture.url}}">         
-                            <h5 class="">{{article.title}}</h5>
-                            <p>{{article.date}}</p>
-                            <p class="font-weight-light">{{article.text | truncatechars:250}}</p>
-                            <p class="">Read more</p>
-                        </div>
-                        {% endfor %}
-                    </div>
-
                 </div>
                 <div class="col-2">
                     <div class="news-side" onclick="openAdvert('/advertise')"> 
@@ -288,8 +295,8 @@
     div.item-container
     {   
         display:block;
-        margin: 20px 25px;
-        padding: 20px; 
+        margin: 0px 25px 20px;
+        padding: 30px; 
         min-width: 500px;
         max-width: 500px;
         box-shadow: 0 4px 8px 0 rgba(212, 212, 212, 0.2), 0 15px 15px 0 rgba(138, 138, 138, 0.19);
@@ -363,7 +370,7 @@
 
     .page-header
     {
-        margin: 30px 20px 0px;
+        margin: 30px 50px 0px;
     }
 
 </style>

@@ -1,35 +1,21 @@
 {% load static from staticfiles %}
 <div class="page-banner" style="background-color: whitesmoke">
-    <div class="row page-header-content page-container" >
-        <div class="col-3 ">                
-            <div class="header-banner">
-                <img class="test" src="{% static 'pics/logo.png' %}" alt="">
-            </div>
-        </div>
-        <div class="col">
-            <div class="row">
-                <div class="col">
-                    <a href="https://www.facebook.com/pnspeterborughuk/"><img class="header-logo" src="{% static 'pics/logo-facebook.svg' %}" alt=""></a>
-                    <img class="header-logo" data-toggle="modal" data-target="#exampleModal" src="{% static 'pics/donate.svg' %}" alt="">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
+    <div class="page-header-content " >
+
+       
                     {% include 'home/nav.html' %}   
-                </div>
-            </div>
-        </div>
+     
     </div>
 </div>
 <style>
     .test
     {
         position: relative;
-        left: 00px;
+        left: -400px;
         width: 200px;
     }
     .page-banner
     {
-        margin-bottom: 1rem;
+        margin-bottom: 0rem;
     }
 </style>

@@ -15,12 +15,12 @@ img.headerImg{
     margin: 0px auto;
 }
 div.const{
-    padding: 50px 100px;
+    padding: 30px 50px 10px;
 }
 div.news-container{
     font-family: Arial, Helvetica, sans-serif;
     padding: 10px;
-    margin: 30px 20px 20px;
+    margin: 30px 20px 10px;
     text-align: center;
     width: 30%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -127,7 +127,7 @@ ul.nav-container{
     background-color: black;
 }
 
-div.page-container{
+.page-container{
     width: 1300px;
     margin-left: auto;
     margin-right: auto;
@@ -283,3 +283,4 @@ div.page-element:hover
     box-shadow: 0 4px 8px 0 rgba(212, 212, 212, 0.2), 0 15px 15px 0 rgba(138, 138, 138, 0.19);
 
 }
+
