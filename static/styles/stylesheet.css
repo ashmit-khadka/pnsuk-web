@@ -176,18 +176,6 @@ img.header-logo{
     width: 50px;
     cursor: pointer;
 }
-img.header-flag-left{
-    position: absolute;
-    top: 00px;
-    left: 120px;
-    width: 90px;
-}
-img.header-flag-right{
-    position: absolute;
-    top: 00px;
-    left: 1100px;
-    width: 90px;
-}
 
 h1.header-title{
     
