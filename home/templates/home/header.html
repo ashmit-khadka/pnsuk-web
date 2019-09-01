@@ -3,17 +3,17 @@
     <div class="page-header-content " >
         <div class="row header-banner page-container">
             <div class="col-2">
-                <img class="header-flag" src="{% static 'pics/flag-nepal.svg' %}" alt=""> 
+                <img class="header-flag-left" src="{% static 'pics/flag-nepal.svg' %}" alt=""> 
             </div>
             <div class="col">
                 <a href="https://www.facebook.com/pnspeterborughuk/"><img class="header-logo" src="{% static 'pics/logo-facebook.svg' %}" alt=""></a>
                 <img class="header-logo" data-toggle="modal" data-target="#exampleModal" src="{% static 'pics/donate.svg' %}" alt="">
             
-                <h1 class="header-title"> Peterborough Nepalese Society (PNS) </h1>
+                <h1 class="header-title"><b>Peterborough Nepalese Society (PNS)</b></h1>
                 <h4 class="header-print">Registered Charity 1169904</h4>
             </div>
             <div class="col-2">
-                <img class="header-flag" src="{% static 'pics/flag-uk.svg' %}" alt="">
+                <img class="header-flag-right" src="{% static 'pics/flag-uk.svg' %}" alt="">
             </div>
         </div>
        {% include 'home/nav.html' %}   
@@ -32,8 +32,14 @@
         margin-bottom: 0rem;
     }
 
-    img.header-flag{
-        margin-top: 70px;
+    img.header-flag-left{
+        margin-top: 70px; 
+        margin-left: 150px;       
+        width: 120px;
+    }
+    img.header-flag-right{
+        margin-top: 70px; 
+        margin-left: -170px;
         width: 120px;
     }
 

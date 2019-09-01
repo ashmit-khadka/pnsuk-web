@@ -66,10 +66,9 @@
             <li class="nav-item">
                 <a class="nav-link nav-bar-link" href="/feedback"><b>Contact Us</b></a>
             </li>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="page-search form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-light my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            <div class="search-bar">
+                <div class="gcse-search"></div>
+            </div>
         </ul>
     </nav>
 
@@ -100,12 +99,17 @@
           color: whitesmoke;
       }
       input.page-search{
-        margin-left: 180px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
       nav.page-navbar
         {
             margin-bottom: 1rem;
+        }
+        div.search-bar
+        {
+            margin-left: 135px;
         }
 </style>
 <script>

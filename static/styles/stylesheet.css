@@ -89,13 +89,7 @@ div.action-side{
 div.page-header{
     background-color: whitesmoke;
 }
-div.page-header-content{
-    text-align:center;
-}
-div.page-header-content::after{
-    background-color: black;
-    opacity: 0.5;
-}
+
 h1.page-header-title{
     text-align: center;
     color: #f4f4f4;
@@ -272,3 +266,7 @@ div.page-element:hover
 
 }
 
+div.page-header-content
+{
+    text-align:center;
+}
