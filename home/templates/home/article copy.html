@@ -1,5 +1,6 @@
 {% extends 'home/base.html' %}
 {% load static from staticfiles %}
+{% block title %}{{ article.title }}{% endblock %}
 {% block content %}
 <style>
     div.article-container
@@ -45,10 +46,10 @@
     }
 </script>     
     <div class="article">
-        <h1> {% block title %} {% endblock %}</h1>
-        <p class="font-italic"> {% block date %} {% endblock %}</p>
-        <img class="articleImg" src="{% block img %} {% endblock %} ">
-        <p class="">{% block text %} {% endblock %}</p>
+        <h1>{{article.title}}</h1>
+        <p class="font-italic">{{article.date}}</p>
+        <img class="articleImg" src="{{article.picture.url}} ">
+        <p class="">{{article.text}}</p>
     </div>
 
     <h5 class="article-latest-title">Read the lastest</h5>

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from home.models import *
 from advert.models import Advert
 import random
+import smtplib
 
 # Create your views here.
 def index(request):
@@ -18,7 +19,7 @@ def index(request):
         SELECT *
         FROM home_project
         ORDER BY home_project.date DESC
-        LIMIT 3
+        LIMIT 2
         """
     )
     events = Event.objects.raw(
@@ -48,12 +49,20 @@ def index(request):
         """
     ))
     event_past = Event_Past.objects.raw(
-    """
-    SELECT *
-    FROM home_event_past    
-    ORDER BY home_event_past.date DESC
-    LIMIT 1
-    """
+        """
+        SELECT *
+        FROM home_event_past    
+        ORDER BY home_event_past.date DESC
+        LIMIT 2
+        """
+    )
+    guests = Guest.objects.raw(
+        """
+        SELECT *
+        FROM home_guest    
+        ORDER BY home_guest.date DESC
+        LIMIT 2
+        """
     )
     print(event_past[0].text)
     context = {
@@ -61,13 +70,42 @@ def index(request):
         'articles' : articles,
         'events' : events,
         'projects' : projects,
-        'event_past' : event_past[0]
+        'event_past' : event_past,
+        'guests' : guests
     }
     return render(request, 'home/index.html', context)
 
 
 def news(request):
-    articles = Article.objects.all().order_by('date').reverse()
+    articles = []
+    articles.extend(Event_Past.objects.raw(
+        """
+        SELECT
+        *,
+        'event' AS Type
+        FROM home_event_past
+        WHERE home_event_past.news = 1
+        """
+    ))
+    articles.extend(Project.objects.raw(
+        """
+        SELECT
+        *,
+        'project' AS Type
+        FROM home_project
+        WHERE home_project.news = 1
+        """
+    ))
+    articles.extend(Guest.objects.raw(
+        """
+        SELECT
+        *,
+        'guest' AS Type
+        FROM home_guest
+        WHERE home_guest.news = 1
+        """
+    ))
+    articles.sort(key=lambda x: x.date, reverse=True)
     context = {
         'articles' : articles,
     }
@@ -79,26 +117,26 @@ def feedback(request):
         'articles' : articles,
     }
     return render(request, 'home/feedback.html', context)
+
+
 def events_past(request):    
-    events = Event.objects.raw(
+
+    events_past = Event_Past.objects.raw(
         """
         SELECT * 
-        FROM home_event
-        WHERE home_event.date < CURRENT_TIMESTAMP
-        ORDER BY home_event.date DESC
+        FROM home_event_past
+        ORDER BY home_event_past.date DESC
         """
-        )
+    ) 
 
-    events_past = Event_Past.objects.all()
-    
     context = {
-        'events' : events,
         'events_past' : events_past,
     }
     return render(request, 'home/events_past.html', context)
 
 
 def events(request):    
+
     events = Event.objects.raw(
         """
         SELECT * 
@@ -106,18 +144,24 @@ def events(request):
         WHERE home_event.date > CURRENT_TIMESTAMP
         ORDER BY home_event.date ASC
         """
-        ) 
+    ) 
     context = {
         'events' : events,
     }
     return render(request, 'home/events_upcoming.html', context)
 
+
 def advertise(request):
     return render(request, 'home/advertise.html')
 
 def guests(request):
-    guests = Guest.objects.all()
-
+    guests = Guest.objects.raw(
+        """
+        SELECT * 
+        FROM home_guest
+        ORDER BY home_guest.date DESC
+        """
+        )
     context = {
         'guests' : guests
     }
@@ -144,14 +188,53 @@ def openArticle(request, id):
 def openEvent(request, id):
     event = Event_Past.objects.get(id=id)
     context = {
-        'event' : event
+        'article' : event
     }
-    return render(request, 'home/event.html', context)
+    return render(request, 'home/article.html', context)
 
 
 def openProject(request, id):
     project = Project.objects.get(id=id)
     context = {
-        'project' : project
+        'article' : project
     }
-    return render(request, 'home/project.html', context)
+    return render(request, 'home/article.html', context)
+
+
+def openGuest(request, id):
+    guest = Guest.objects.get(id=id)
+    context = {
+        'article' : guest
+    }
+    return render(request, 'home/article.html', context)
+
+def sendFeedback(request):
+    response = 0
+    if request.method == 'POST':
+        print(request.POST.get('title'))
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+        body = "Name: %s\nEmail: %s\nMessage: %s\n" % (name, email, message)
+        response == send_email(subject, body, email)
+
+    return feedback(request)
+
+def send_email(subject, msg, email):
+    try:
+        server = smtplib.SMTP('smtp-mail.outlook.com:587')
+        server.ehlo()
+        server.starttls()
+        server.login('pnsuk.org.es@outlook.com', 'Society@7')
+        message = 'Subject: {}\n\n{}'.format(subject, msg)
+        server.sendmail('pnsuk.org.es@outlook.com', 'pnsuk.org@hotmail.com', message)
+        server.sendmail('pnsuk.org.es@outlook.com', email, 'Your message to PNS has been sent, Thank you for your feedback.')
+
+        server.quit()
+        print("Success: Email sent!")
+        return 1
+    except:
+        print("Email failed to send.")
+        return 0
+

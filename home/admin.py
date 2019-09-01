@@ -49,6 +49,7 @@ class ProjectAdmin( admin.ModelAdmin ):
         'title',
         'date',
         'home',
+        'news'
         )  
 
 class PolicyAdmin( admin.ModelAdmin ):
@@ -67,6 +68,7 @@ class Event_PastAdmin( admin.ModelAdmin ):
         'title',
         'date',
         'home',
+        'news'
         )
 
 class GuestModelForm( forms.ModelForm ):
@@ -81,6 +83,7 @@ class GuestAdmin( admin.ModelAdmin ):
         'title',
         'date',
         'home',
+        'news'
         )
 
     

@@ -1,6 +1,25 @@
-<style>
-
-</style>
+<script>
+    function sendFeedback() {
+        alert('test')
+        var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+        $.ajax({
+            type:'GET',
+            url:'/sendFeedback/',
+            headers:{
+                "X-CSRFToken": csrftoken
+            }, 
+            data:{
+                'name':document.getElementsByName('name'),
+                'email':document.getElementsByName('email'),
+                'subject':document.getElementsByName('subject'),
+                'mesasge':document.getElementsByName('message'),
+            },
+            success:function(data){
+                alert(data)
+            }
+        })
+    }
+</script>
 
 {% extends 'home/base.html' %}
 {% load static from staticfiles %}
@@ -16,23 +35,23 @@
     </div>
     <div class="row">
         <div class="col-7">
-            <form>
+            <form action="/sendFeedback/" method="POST"> {% csrf_token %}
                 <div class="form-group">
                     <label for="inputName">Name</label>
-                    <input type="text" class="form-control" id="inputName" placeholder="Your name">
+                    <input type="text" class="form-control" id="inputName" placeholder="Your name" name="name">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 <div class="form-group">
                     <label for="inputName">Subject</label>
-                    <input type="text" class="form-control" id="inputName" placeholder="The subject">
+                    <input type="text" class="form-control" id="inputName" placeholder="The subject" name="subject">
                 </div>
                 <div class="form-group">
                     <label for="inputName">Your Message</label>
-                    <textarea class="form-control" rows="5" placeholder="Write your thoughts here"></textarea>
+                    <textarea class="form-control" rows="5" placeholder="Write your thoughts here" name="message"></textarea>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -43,23 +62,15 @@
                 <br><b>Email</b>
                 <br><a href="mailto:pnsuk.org@hotmail.co.uk">pnsuk.org@hotmail.co.uk</a>  (NEW)
                 <br><a href="mailto:peterborough-nepalisociety@hotmail.co.uk">peterborough-nepalisociety@hotmail.co.uk</a>
-
-                
                 <br><br><b>Phone</b>
                 <br>Shiva Bhandari : 07462916936                
                 <br>Harihar Bhattarai : 07470163339
-                <br><a href="/members/trustees">Click here to see our trustees</a>         
-                
-                
+                <br><a href="/members/trustees">Click here to see our trustees</a>                 
                 <br><br><b>Address</b>
-                <br>46 Winwick Place
-                
-                <br>West wood
-                
-                <br>Peterborough
-                
-                <br>PE3 7 HS
-                
+                <br>46 Winwick Place                
+                <br>West wood                
+                <br>Peterborough                
+                <br>PE3 7 HS               
                 
         </div>
     </div>

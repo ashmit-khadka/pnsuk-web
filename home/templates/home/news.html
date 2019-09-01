@@ -5,14 +5,14 @@
     <div class="page-info">
         <div class="content-container">
         <h1>News</h1>
-        <p class="lead">Read the latest news and topics of interest in community.</p>
+        <p class="lead">Have a look at the latest news and topics of interest in community.</p>
         </div>
     </div>
     {% if articles %}
     <p class="text-right font-italic">Showing articles {{articles | length}} of {{articles | length}}</p>
     {% for article in articles %}
         <!--<p class="article-date">{{article.date}}</p>-->
-        <div class="row page-element" onclick="openArticle({{article.id}})">
+        <div class="row page-element" onclick="openLink('/{{article.Type}}/{{article.id}}')">
             <div class="col-4">
                 <img class="news-img" src="{{article.picture.url}} ">
             </div>

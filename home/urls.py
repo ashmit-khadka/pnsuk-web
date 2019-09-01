@@ -10,7 +10,8 @@ urlpatterns = [
     path('events-past/', views.events_past),
     path('advertise/', views.advertise),
     path('project/<id>/', views.openProject),
-    path('event/<id>/', views.openEvent),   
+    path('event/<id>/', views.openEvent),
+    path('guest/<id>/', views.openGuest),   
     path('guests/', views.guests),    
- 
+    path('sendFeedback/', views.sendFeedback),   
 ]

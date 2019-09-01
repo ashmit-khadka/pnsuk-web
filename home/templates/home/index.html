@@ -4,7 +4,7 @@
     <head>        
         <meta charset="UTF-8">
         <title>
-            PNS | {% block title %} {% endblock %}
+            PNS | Home
         </title>
         <meta name="description" content="{% block description %} {% endblock %}">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -12,6 +12,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script src="{% static 'scripts/scripts.js' %}"></script>
+        <script async src="https://cse.google.com/cse.js?cx=005679846021293940639:doe6doxzf4m"></script>
         <link rel="stylesheet" type="text/css" href="{% static 'styles/stylesheet.css' %}">
         <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
     </head>
@@ -43,7 +44,8 @@
             </div>
         </div>
         <div class="page-container">
-            <div class="row">                
+            <div class="row">
+                <div class="col">                
                 <div class="col bd-example">
                     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
@@ -79,21 +81,13 @@
                         </a>
                     </div>            
                 </div>
-                <div class="col-3 ">
-                    <div class="home-tile" data-toggle="modal" data-target="#exampleModal">
-                        <img class="mini-tile" src="/static/media/article_imgs/dashai-feature.jpg">
-                    </div>
-                    <div class="home-tile" data-toggle="modal" data-target="#exampleModal">
-                        <img class="mini-tile" src="/static/media/event_imgs/IMG-3d1df6771babec57f5474b5a16e019b1-V6866.jpg">
-                    </div>
-                </div>
+         
                 <div class="info" data-target="#collapseExample">
                     <div class="const">
                         <h4 class="">PNS at a glance</h4>
                         <p class="font-weight-light">The Peterborough Nepalese Society (PNS) is a non-profit making community based organisation established in 2007 with the initiation of all individuals or families originally coming from Nepal and those who are living in and around Peterborough areas.
                                 PNS is now a charity organisation registered in the Charity Commission of England and Wales (Charity number 1169904) and is running successfully based on the rules and regulations as outlined in its own governing document- Peterborough Nepalese Society Constitution 2016. 
                                 PNS, based in Peterborough, (Cambridgeshire) always focuses its efforts on social cohesion and integration with British culture and values and develops a sustainable peace and harmony in and among the communities.
-
                         </p>
 
                     <button class="btn btn-outline-info" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -184,54 +178,55 @@
                             </div>
                         </div>
                     </div>
-                </div>            
-           
+                </div>
             </div>
             <div class="row">
                 <div class="col">
-
-                    <h4 class="page-header">Latest in Our Community</h4>
+                    <div class="row page-section-header">
+                        <h4 class="col section-header">Latest in Our Community</h4>
+                        <button type="button" class="btn btn-outline-secondary col-2 section-link" onclick="openLink('/news')">More</button>
+                    </div>
                     <hr>
-                    <div class="row">
-                        <div class="col item-container" onclick="openEvent({{event_past.id}})"> 
-                            <img class="event" src="{{event_past.picture.url}}">         
-                            <button type="button" class="btn btn-danger">#Event</button>
-
-                            <h5 class="">{{event_past.title}}</h5>
-                            <p>{{event_past.date}}</p>
-                            <p class="font-weight-light">{{event_past.text | truncatechars:250}}</p>
-                            <p class="">Read more</p>    
-                        </div>
-                        {% if articles %}
-                        {% for article in front_items|slice:":2" %}                        
-                        <div class="col item-container" onclick="openArticle({{article.id}})"> 
-                            <img class="event" src="{{article.picture.url}}">         
-                            <button type="button" class="btn btn-info">#News</button>
-
-                            <h5 class="">{{article.title}}</h5>
-                            <p>{{article.date}}</p>
-                            <p class="font-weight-light">{{article.text | truncatechars:250}}</p>
-                            <p class="">Read more</p>
-                        </div>
-                        {% endfor %}
-                        {% endif %}
-                        {% for article in projects|slice:":1" %}                        
-                        <div class="col item-container" onclick="openArticle({{article.id}})"> 
-                            <img class="event" src="{{article.picture.url}}">         
-                            <button type="button" class="btn btn-success">#Project</button>
-
-                            <h5 class="">{{article.title}}</h5>
-                            <p>{{article.date}}</p>
-                            <p class="font-weight-light">{{article.text | truncatechars:250}}</p>
-                            <p class="">Read more</p>
+                    <div class="row">   
+                        {% for article in event_past %}                        
+                        <div class="col item-container" onclick="openEvent({{article.id}})"> 
+                            <img class="item-img" src="{{article.picture.url}}">         
+                            <div class="item-info">
+                                <button type="button" class="btn btn-info">#News</button>
+                                <h5 class="">{{article.title}}</h5>
+                                <p>{{article.date}}</p>
+                                <p class="font-weight-light">{{article.text | truncatechars:250}}</p>
+                                <p class="">Read more</p>
+                            </div>
                         </div>
                         {% endfor %}
                     </div>
-                    <h3 class="page-header">Upcomming Events</h3>
+                    <div class="row page-section-header">
+                        <h4 class="col section-header">Projects</h4>
+                    </div>                    
+                    <hr>
+                    <div class="row">
+                        {% for article in projects %}                        
+                        <div class="col item-container" onclick="openProject({{article.id}})"> 
+                            <img class="event" src="{{article.picture.url}}"> 
+                            <div class="item-info">        
+                                <button type="button" class="btn btn-success">#Project</button>
+                                <h5 class="">{{article.title}}</h5>
+                                <p>{{article.date}}</p>
+                                <p class="font-weight-light">{{article.text | truncatechars:250}}</p>
+                                <p class="">Read more</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="row page-section-header">
+                        <h4 class="col section-header">Upcomming Events</h4>
+                        <button type="button" class="btn btn-outline-secondary col-2 section-link" onclick="openLink('/events')">More</button>
+                    </div>
                     <hr>
                     <div class="row">
                         {% for event in events|slice:":2" %}
-                        <div class="col item-container">
+                        <div class="col item-container item-info" onclick="openLink('/events')">
                             <div class="row">
                                 <div class="col">
                                     <button type="button" class="btn btn-warning">#Event</button>
@@ -245,25 +240,56 @@
                         </div>
                         {% endfor %}
                     </div>
-                </div>
-                <div class="col-2">
-                    <div class="news-side" onclick="openAdvert('/advertise')"> 
-                        <h5 class="news-title">Advertise here</h5>
-                        <p>Promote you business on the official PNS website! Click to learn more</p>
+                    <div class="row page-section-header">
+                        <h4 class="col section-header">Special Guests</h4>
+                        <button type="button" class="btn btn-outline-secondary col-2 section-link" onclick="openLink('/guests')">More</button>
                     </div>
-                    {%if adverts%}
-                    {% for ad in adverts %}        
-                    <div class="news-side" onclick="openAdvert('{{ad.url}}')">
-                        <img class="news-img" src="{{ad.img}}">
-                        <h5 class="news-title">{{ad.name}}</h5>
-                        <p class="font-weight-light">{{ad.description}}</p>
+                    <hr>
+                    <div class="row">
+                        {% for guest in guests %}
+                        <div class="col item-container" onclick="openGuest({{guest.id}})"> 
+                            <img class="event" src="{{guest.picture.url}}">         
+                            <div class="item-info">
+                                <button type="button" class="btn btn-danger">#Guest</button>
+                                <h5 class="">{{guest.title}}</h5>
+                                <p>{{guest.date}}</p>
+                                <p class="font-weight-light">{{guest.text | truncatechars:250}}</p>
+                                <p class="">Read more</p>
+                            </div>
+                        </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
-                    {% endif %}  
+                </div>  
+            </div>
+            </div>
+            <div class="col-2">
+                <div class="donate" data-toggle="modal" data-target="#exampleModal">
+                    <img class="action-img" src="{% static 'pics/donate.svg' %}">
+                    <h5 class="text-center font-italic">Donate to our charity</h5>
                 </div>
-                   
-                    
-                
+                <div class="news-side" onclick="openAdvert('/advertise')"> 
+                    <h5 class="news-title">Advertise here</h5>
+                    <p>Click to learn more</p>
+                </div>
+                {%if adverts%}
+                {% for ad in adverts %}        
+                <div class="news-side" onclick="openAdvert('{{ad.url}}')">
+                    <img class="news-img" src="{{ad.img}}">
+                    <h5 class="news-title">{{ad.name}}</h5>
+                    <p class="font-weight-light">{{ad.description}}</p>
+                </div>
+                {% endfor %}
+                {% endif %} 
+                {% for event in events %}
+                    <div class="news-side" onclick="openLink('/events')">
+                        <button type="button" class="btn btn-warning">#Event</button>
+                        <h5>{{event.name}}</h5>
+                        <img class="item-text-icon" src="{% static 'pics/calendar.svg' %}">
+                        <p class="">{{event.date}} {{event.date|date:"l"}}.</p>
+                        <img class="item-text-icon" src="{% static 'pics/location.svg' %}">
+                        <p class="">{{event.venue}}</p> 
+                    </div>
+                {% endfor %} 
             </div>
             {% include 'home/footer.html' %}
         </div>
@@ -294,20 +320,24 @@
     }
     div.item-container
     {   
-        display:block;
+        padding: 10px; 
         margin: 0px 25px 20px;
-        padding: 30px; 
         min-width: 500px;
         max-width: 500px;
         box-shadow: 0 4px 8px 0 rgba(212, 212, 212, 0.2), 0 15px 15px 0 rgba(138, 138, 138, 0.19);
     }
+    
 
     div.item-container:hover
     {   
         cursor: pointer;
         transition: background-color 0.2s ease;
         background-color: whitesmoke;
+    }
 
+    div.item-info
+    {   
+        padding: 0px 20px 30px;
     }
 
     .item-container img
@@ -345,11 +375,12 @@
         text-align: center;
     }
 
-    .text {
-    background-color: #4CAF50;
-    color: white;
-    font-size: 16px;
-    padding: 16px 32px;
+    .text 
+    {
+        background-color: #4CAF50;
+        color: white;
+        font-size: 16px;
+        padding: 16px 32px;
     }
     hr.style1{
         margin: 40px 0px;
@@ -368,12 +399,34 @@
         margin: 5px;
     }
 
-    .page-header
+    .section-header
     {
         margin: 30px 50px 0px;
     }
 
-</style>
+    .section-link
+    {
+        margin: 25px 80px 0px 0px;
 
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.3"></script>
+        font-style: italic;
+        color: #3f3f3f;
+    }
+
+    div.donate
+    {
+        margin: 0px 0px 30px;
+        padding: 20px;
+        cursor: pointer;
+        background-color: rgb(252, 252, 252);
+        box-shadow: 0 4px 8px 0 rgba(212, 212, 212, 0.2), 0 15px 15px 0 rgba(138, 138, 138, 0.19);
+
+    }
+
+    img.item-img
+    {
+        width: 100%;
+    }
+
+    div.item-side
+    {}
+</style>

@@ -23,6 +23,11 @@ function openEvent(id)
     location.href = "/event/"+id+"/";
 }
 
+function openGuest(id)
+{
+    location.href = "/guest/"+id+"/";
+}
+
 function search(query)
 {
     location.href = "https://www.google.com/search?q=" + query + "+site%3Awww.pnsuk.org";
