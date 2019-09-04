@@ -6,14 +6,6 @@ import smtplib
 
 # Create your views here.
 def index(request):
-    articles = Article.objects.raw(
-        """
-        SELECT *
-        FROM home_article
-        ORDER BY home_article.date DESC
-        LIMIT 3
-        """
-    )
     projects = Project.objects.raw(
         """
         SELECT *
@@ -31,23 +23,9 @@ def index(request):
         LIMIT 3
         """
         ) 
-    front_items = []
-    front_items.extend(Article.objects.raw(
-        """
-        SELECT *
-        FROM home_article
-        WHERE home_article.home = 1
-        ORDER BY home_article.DATE DESC
-        """
-    ))
-    front_items.extend(Project.objects.raw(
-        """
-        SELECT *
-        FROM home_project
-        WHERE home_project.home = 1
-        ORDER BY home_project.DATE DESC
-        """
-    ))
+
+    front_items = getLatest()
+
     event_past = Event_Past.objects.raw(
         """
         SELECT *
@@ -67,7 +45,6 @@ def index(request):
     print(event_past[0].text)
     context = {
         'front_items' : front_items,
-        'articles' : articles,
         'events' : events,
         'projects' : projects,
         'event_past' : event_past,
@@ -112,11 +89,7 @@ def news(request):
     return render(request, 'home/news.html', context)
 
 def feedback(request):
-    articles = Article.objects.all()
-    context = {
-        'articles' : articles,
-    }
-    return render(request, 'home/feedback.html', context)
+    return render(request, 'home/feedback.html')
 
 
 def events_past(request):    
@@ -166,45 +139,34 @@ def guests(request):
         'guests' : guests
     }
     return render(request, 'home/guests.html', context)
-    
-
-def openArticle(request, id):
-    article = Article.objects.get(id=id)
-    articles = Article.objects.raw(
-        """
-        SELECT *
-        FROM home_article
-        ORDER BY home_article.date DESC
-        LIMIT 3
-        """
-    )
-    context = {
-        'article' : article,
-        'articles' : articles
-    }
-    return render(request, 'home/article.html', context)
-
 
 def openEvent(request, id):
     event = Event_Past.objects.get(id=id)
+    latestItems = getLatest()
+
     context = {
-        'article' : event
+        'article' : event,
+        'latestItems' : latestItems
     }
     return render(request, 'home/article.html', context)
 
 
 def openProject(request, id):
     project = Project.objects.get(id=id)
+    latestItems = getLatest()
     context = {
-        'article' : project
+        'article' : project,
+        'latestItems' : latestItems
     }
     return render(request, 'home/article.html', context)
 
 
 def openGuest(request, id):
     guest = Guest.objects.get(id=id)
+    latestItems = getLatest()
     context = {
-        'article' : guest
+        'article' : guest,
+        'latestItems' : latestItems
     }
     return render(request, 'home/article.html', context)
 
@@ -238,3 +200,39 @@ def send_email(subject, msg, email):
         print("Email failed to send.")
         return 0
 
+def getLatest():
+    front_items = []
+    
+    front_items.extend(Event_Past.objects.raw(
+        """
+        SELECT
+        *,
+        'event' AS Type
+        FROM home_event_past
+        WHERE home_event_past.home = 1
+        ORDER BY home_event_past.DATE DESC
+        """
+    ))
+
+    front_items.extend(Guest.objects.raw(
+        """
+        SELECT
+        *,
+        'guest' AS Type
+        FROM home_guest
+        WHERE home_guest.home = 1
+        ORDER BY home_guest.DATE DESC
+        """
+    ))
+    front_items.extend(Project.objects.raw(
+        """
+        SELECT
+        *,
+        'project' AS Type
+        FROM home_project
+        WHERE home_project.home = 1
+        ORDER BY home_project.DATE DESC
+        """
+    ))
+
+    return front_items

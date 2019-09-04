@@ -1,6 +1,5 @@
 from django.contrib import admin
 # Register your models here.
-from .models import Article
 from .models import Event
 from .models import Policy
 from .models import Project
@@ -8,20 +7,7 @@ from .models import Event_Past
 from .models import Guest
 from django import forms
  
- 
-class ArticleModelForm( forms.ModelForm ):
-    text = forms.CharField( widget=forms.Textarea )
-    class Meta:
-        model = Article
-        fields = '__all__'  
 
-class ArticleAdmin( admin.ModelAdmin ):
-    form = ArticleModelForm
-    list_display = (
-        'title',
-        'date',
-        'home',
-        )
 
 class EventModelForm( forms.ModelForm ):
     other = forms.CharField( widget=forms.Textarea )
@@ -86,9 +72,6 @@ class GuestAdmin( admin.ModelAdmin ):
         'news'
         )
 
-    
-
-admin.site.register(Article, ArticleAdmin)
 admin.site.register(Event, EventAdmin)
 admin.site.register(Policy, PolicyAdmin)
 admin.site.register(Project, ProjectAdmin)

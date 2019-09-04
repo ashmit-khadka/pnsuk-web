@@ -1,18 +1,6 @@
 from django.db import models
 from django.core.validators import MaxLengthValidator
 
-class Article(models.Model):
-    title = models.CharField(max_length=100)
-    picture = models.ImageField(upload_to='article_imgs', blank=False, default='default/default.jfif')
-    date = models.DateField() 
-    text = models.CharField(max_length=10000)
-    home = models.BooleanField(default=False)
-    news = models.BooleanField(default=True)
-    event = models.BooleanField(default=True)
-    guest = models.BooleanField(default=False)
-    project = models.BooleanField(default=False)
-
-
 class Event(models.Model):
     name = models.CharField(max_length=100)
     venue = models.CharField(max_length=100)

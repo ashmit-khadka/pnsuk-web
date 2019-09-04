@@ -27,14 +27,15 @@
     {% for guest in guests %}
         <div class="row article-item" onclick="openGuest({{guest.id}})">
             <div class="col-4">
-                <img class="news-img" src="{{guest.picture.url}} ">
+                <img class="page-element-img" src="{{guest.picture.url}} ">
             </div>
             <div class="col">
                 <h3 class="">{{guest.title}} </h3>
                 <p class="">{{guest.date}}</p>
-                <p class="font-weight-light">{{guest.text | truncatechars:200}}</p> 
-                <a><p>Click to read more</p></a>
- 
+                <p class="font-weight-light">{{guest.text | truncatechars:150}}</p> 
+                {% if guest.text|length > 150 %}
+                    <a><p>Click to read more</p></a>
+                {% endif %}
             </div>
         </div>
     {% endfor %}

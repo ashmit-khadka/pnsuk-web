@@ -14,13 +14,15 @@
         <!--<p class="article-date">{{article.date}}</p>-->
         <div class="row page-element" onclick="openLink('/{{article.Type}}/{{article.id}}')">
             <div class="col-4">
-                <img class="news-img" src="{{article.picture.url}} ">
+                <img class="page-element-img" src="{{article.picture.url}} ">
             </div>
             <div class="col">
                 <h3 class="">{{article.title}} </h3>
                 <p class="">{{article.date}}</p>
-                <p class="font-weight-light">{{article.text | truncatechars:200}}</p>  
-                <a><p>Click to read more</p></a>
+                <p class="font-weight-light">{{article.text | truncatechars:150}}</p>  
+                {% if guest.text|length > 150 %}
+                    <a><p>Click to read more</p></a>
+                {% endif %}
             </div>
         </div>
     {% endfor %}

@@ -39,6 +39,24 @@
     h5.article-latest-title{
         margin-top: 100px;
     }
+
+    img.article-img
+    {        
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        height: 500px;
+    }
+    div.article-img-backdrop
+    {
+        background-color: whitesmoke;
+    }
+
+    .article-text
+    {
+        margin-top: 20px;
+    }
+
 </style>
 <script>
     function openArticle(id){
@@ -48,16 +66,18 @@
     <div class="article">
         <h1>{{article.title}}</h1>
         <p class="font-italic">{{article.date}}</p>
-        <img class="articleImg" src="{{article.picture.url}} ">
-        <p class="">{{article.text}}</p>
+        <div class="article-img-backdrop">
+            <img class="article-img" src="{{article.picture.url}} ">
+        </div>
+        <p class="article-text">{{article.text}}</p>
     </div>
 
     <h5 class="article-latest-title">Read the lastest</h5>
     <div class="row">
         {% load static from staticfiles %}
-        {% for article in articles %}
-            <div class="page-element col" onclick="openArticle({{article.id}})">
-                <img class="article-latest-img" src="{{article.picture.url}} ">
+        {% for article in latestItems %}
+            <div class="page-element col" onclick="openLink('/{{article.Type}}/{{article.id}}')">
+                <img class="page-element-img" src="{{article.picture.url}} ">
                 <h4 class="news-title">{{article.title}}</h4>
                 <p>{{article.text|truncatechars:100}}</p>
             </div>
