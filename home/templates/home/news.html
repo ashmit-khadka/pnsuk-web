@@ -20,7 +20,7 @@
                 <h3 class="">{{article.title}} </h3>
                 <p class="">{{article.date}}</p>
                 <p class="font-weight-light">{{article.text | truncatechars:150}}</p>  
-                {% if guest.text|length > 150 %}
+                {% if article.text|length > 150 %}
                     <a><p>Click to read more</p></a>
                 {% endif %}
             </div>

@@ -66,8 +66,9 @@
             <li class="nav-item">
                 <a class="nav-link nav-bar-link" href="/feedback"><b>Contact Us</b></a>
             </li>
-            <div class="search-bar">
-                <div class="gcse-search"></div>
+            <div class="form-inline my-2 my-lg-0 search-bar">
+                <input class="page-search form-control mr-sm-2" id="search-query" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-light my-2 my-sm-0" type="button" onclick="search(document.getElementById('search-query').value)">Search</button>
             </div>
         </ul>
     </nav>
@@ -75,42 +76,42 @@
  <style>   
     .dropdown-submenu {
         position: relative;
-      }
-      
-      .dropdown-submenu a::after {
+    }
+    
+    .dropdown-submenu a::after {
         transform: rotate(-90deg);
         position: absolute;
         right: 6px;
         top: .8em;
-      }
-      
-      .dropdown-submenu .dropdown-menu {
+    }
+    
+    .dropdown-submenu .dropdown-menu {
         top: 0;
         left: 100%;
         margin-left: .1rem;
         margin-right: .1rem;
-      }
-      ul.nav-bar{
-          height: 30px;
-          margin-bottom: 10px;
-      }
-      a.nav-bar-link{
-          margin-top: 0px;
-          color: whitesmoke;
-      }
-      input.page-search{
+    }
+    ul.nav-bar{
+        height: 30px;
+        margin-bottom: 10px;
+    }
+    a.nav-bar-link{
+        margin-top: 0px;
+        color: whitesmoke;
+    }
+    input.page-search{
         margin-left: auto;
         margin-right: auto;
-      }
+    }
 
-      nav.page-navbar
-        {
-            margin-bottom: 1rem;
-        }
-        div.search-bar
-        {
-            margin-left: 135px;
-        }
+    nav.page-navbar
+    {
+        margin-bottom: 1rem;
+    }
+    div.search-bar
+    {
+        margin-left: auto;
+    }
 </style>
 <script>
     $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {

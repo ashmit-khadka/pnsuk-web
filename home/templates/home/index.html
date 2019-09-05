@@ -57,14 +57,14 @@
                             ></li>
                             {% endfor %}
                         </ol>
-                    <div class="carousel-inner">
+                    <div class="carousel-inner img-slider-container">
                         {% for item in front_items%}
-                        <div class="carousel-item 
+                        <div class="carousel-item
                                 {% if item == front_items.0 %}
                                     active
-                                {% endif %}">
+                                {% endif %}" onclick="openLink('/{{item.Type}}/{{item.id}}')">
                             <img src="{{item.picture.url}}" class="d-block w-100 carouselImg" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
+                            <div class="carousel-caption d-none d-md-block img-slider-text">
                                 <h5>{{item.title}}</h5>
                                 <p>{{item.text | truncatechars:200}}</p>
                             </div>
@@ -267,7 +267,7 @@
                     <img class="action-img" src="{% static 'pics/donate.svg' %}">
                     <h5 class="text-center font-italic">Donate to our charity</h5>
                 </div>
-                <div class="news-side" onclick="openAdvert('/advertise')"> 
+                <div class="news-side" onclick="openAdvert('/advertise')" style="text-align: center"> 
                     <h5 class="news-title">Advertise here</h5>
                     <p>Click to learn more</p>
                 </div>
@@ -426,6 +426,12 @@
 
     }
 
+    div.donate:hover
+    {
+        transition: background-color 0.2s ease;
+        background-color: rgb(242, 242, 242);
+    }
+
     img.item-img
     {
         width: 100%;
@@ -433,4 +439,15 @@
 
     div.item-side
     {}
+
+    div.img-slider-text
+    {
+        background-color: rgba(30, 30, 30, 0.5);
+
+    }
+
+    div.img-slider-container
+    {
+        cursor: pointer;
+    }
 </style>

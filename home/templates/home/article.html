@@ -75,7 +75,7 @@
     <h5 class="article-latest-title">Read the lastest</h5>
     <div class="row">
         {% load static from staticfiles %}
-        {% for article in latestItems %}
+        {% for article in latestItems|slice:":3"  %}
             <div class="page-element col" onclick="openLink('/{{article.Type}}/{{article.id}}')">
                 <img class="page-element-img" src="{{article.picture.url}} ">
                 <h4 class="news-title">{{article.title}}</h4>

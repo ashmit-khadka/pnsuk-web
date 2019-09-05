@@ -30,5 +30,6 @@ function openGuest(id)
 
 function search(query)
 {
-    location.href = "https://www.google.com/search?q=" + query + "+site%3Awww.pnsuk.org";
+    //alert(document.getElementById('search-query').value)
+    location.href = "https://www.google.com/search?q=site%3Awww.pnsuk.org " + query;
 }
