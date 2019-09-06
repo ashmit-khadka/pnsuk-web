@@ -66,8 +66,8 @@
     <div class="article">
         <h1>{{article.title}}</h1>
         <p class="font-italic">{{article.date}}</p>
-        <div class="article-img-backdrop">
-            <img class="article-img" src="{{article.picture.url}} ">
+        <div class="article-img-backdrop" onclick="openLink('{{article.picture.url}}')">
+            <img class="article-img" src="{{article.picture.url}}">
         </div>
         <p class="article-text">{{article.text}}</p>
     </div>
@@ -77,7 +77,7 @@
         {% load static from staticfiles %}
         {% for article in latestItems|slice:":3"  %}
             <div class="page-element col" onclick="openLink('/{{article.Type}}/{{article.id}}')">
-                <img class="page-element-img" src="{{article.picture.url}} ">
+                <img class="page-element-img" src="{{article.picture.url}}">
                 <h4 class="news-title">{{article.title}}</h4>
                 <p>{{article.text|truncatechars:100}}</p>
             </div>
