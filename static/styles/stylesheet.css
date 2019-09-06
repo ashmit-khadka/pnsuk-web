@@ -277,3 +277,24 @@ div.page-header-content
 {
     text-align:center;
 }
+
+
+.page-banner
+{
+    margin-bottom: 0rem;
+}
+
+img.header-flag-left{
+    margin-top: 70px; 
+    margin-left: 190px;       
+    width: 120px;
+}
+img.header-flag-right{
+    margin-top: 70px; 
+    margin-left: -210px;
+    width: 120px;
+}
+.header-title{
+    font-family: 'Satisfy', cursive;
+
+}
