@@ -42,7 +42,6 @@ def index(request):
         LIMIT 2
         """
     )
-    print(event_past[0].text)
     context = {
         'front_items' : front_items,
         'events' : events,
