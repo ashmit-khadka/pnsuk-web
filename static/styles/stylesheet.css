@@ -163,7 +163,7 @@ img.event-info-icon
 
 img.header-logo{
     margin-top: 20px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     margin-left: 10px;
     margin-right: 10px;
     display: inline-block;
@@ -296,5 +296,14 @@ img.header-flag-right{
 }
 .header-title{
     font-family: 'Satisfy', cursive;
+}
 
+div.header-text
+{
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+.header-text-footer
+{
+    font-style: italic;
 }
