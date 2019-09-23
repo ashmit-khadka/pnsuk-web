@@ -20,7 +20,6 @@ class Project(models.Model):
     home = models.BooleanField(default=False)
     news = models.BooleanField(default=False)
 
-
 class Event_Past(models.Model):
     title = models.CharField(max_length=100)
     picture = models.ImageField(upload_to='event_imgs', blank=False, default='default/default.jfif')
@@ -28,6 +27,7 @@ class Event_Past(models.Model):
     text = models.CharField(max_length=10000)
     home = models.BooleanField(default=False)
     news = models.BooleanField(default=False)
+    aid = models.BooleanField(default=False)
 
 class Guest(models.Model):
     title = models.CharField(max_length=100)
@@ -36,4 +36,9 @@ class Guest(models.Model):
     text = models.CharField(max_length=10000)
     home = models.BooleanField(default=False)
     news = models.BooleanField(default=False)
+
+class Minutes(models.Model):
+    name = models.CharField(max_length=100)
+    file = models.FileField()
+
 

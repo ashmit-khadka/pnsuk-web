@@ -3,4 +3,11 @@ from .models import Advert
 
 
 # Register your models here.
-admin.site.register(Advert)
+
+
+class AdvertAdmin( admin.ModelAdmin ):
+    list_display = (
+        'name',        
+        )
+
+admin.site.register(Advert, AdvertAdmin)

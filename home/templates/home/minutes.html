@@ -1,0 +1,44 @@
+{% extends 'home/base.html' %}
+{% load static from staticfiles %}
+{% block description %} {{article.heading}} {% endblock %}
+{% block keywords %}{{ article.title }}{% endblock %}
+{% block title %} News {% endblock %}
+{% block content %}
+    <div class="page-info">
+        <div class="content-container">
+        <h1>Minutes</h1>
+        <p class="lead">Minutes from our meetings</p>
+        </div>
+    </div>
+    {% if minutes %}
+    <p class="text-right font-italic">Showing articles {{ minutes | length }} of {{ minutes | length }}</p>
+    {% for minute in minutes %}
+        <!--<p class="article-date">{{article.date}}</p>-->
+        <a href="{{minute.file.url}}">
+        <div class="row page-element">
+            <div class="col-1">
+                <img class="news-img" src="{% static 'pics/file.svg' %}" style="width: 50px">
+            </div>
+            <div class="col">
+                <h3 class="">{{ minute.name }} ({{minute.file}})</h3>
+            </div>
+        </div>
+        </a>
+    {% endfor %}
+    <nav class="mt-5" aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if minutes.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page={{ minutes.previous_page_number }}">Previous</a></li>
+            {% endif %}
+
+            {% for page_number in minutes.paginator.page_range %}
+                <li class="page-item"><a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a></li>
+            {% endfor %}
+
+            {% if articles.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ minutes.next_page_number }}">Next</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+{% endblock %}

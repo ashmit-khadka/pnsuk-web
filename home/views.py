@@ -3,6 +3,7 @@ from home.models import *
 from advert.models import Advert
 import random
 import smtplib
+from django.core.paginator import Paginator
 
 # Create your views here.
 def index(request):
@@ -51,9 +52,25 @@ def index(request):
     }
     return render(request, 'home/index.html', context)
 
+def article_collection(request, title, heading, articles): 
+
+    paginator = Paginator(articles, 8)
+    page = request.GET.get('page')
+    articles = paginator.get_page(page)
+
+    context = {
+        'title': title,
+        'heading' : heading,
+        'articles' : articles,
+    }
+    return render(request, 'home/article_collection.html', context)
 
 def news(request):
     articles = []
+
+    title = 'News'
+    heading = 'Have a look at the latest news and topics of interest in community'
+
     articles.extend(Event_Past.objects.raw(
         """
         SELECT
@@ -82,29 +99,42 @@ def news(request):
         """
     ))
     articles.sort(key=lambda x: x.date, reverse=True)
-    context = {
-        'articles' : articles,
-    }
-    return render(request, 'home/news.html', context)
+    return article_collection(request, title, heading, articles)
+
+def aid(request):
+
+    title = 'Charity Aid'
+    heading = 'Aid from PNS to help the community.'
+
+    articles =  Event_Past.objects.raw(
+        """
+        SELECT *, 
+        'event' AS Type
+        FROM home_event_past
+        WHERE home_event_past.aid = 1
+        ORDER BY home_event_past.date DESC
+        """
+    ) 
+    return article_collection(request, title, heading, articles)
 
 def feedback(request):
     return render(request, 'home/feedback.html')
 
+def events_past(request):
 
-def events_past(request):    
+    title = 'Events'
+    heading = 'Our past meetings, parties and gatherings.'
 
-    events_past = Event_Past.objects.raw(
+    articles =  Event_Past.objects.raw(
         """
-        SELECT * 
+        SELECT *, 
+        'event' AS Type
         FROM home_event_past
+        WHERE home_event_past.aid = 0
         ORDER BY home_event_past.date DESC
         """
     ) 
-
-    context = {
-        'events_past' : events_past,
-    }
-    return render(request, 'home/events_past.html', context)
+    return article_collection(request, title, heading, articles)
 
 
 def events(request):    
@@ -127,47 +157,63 @@ def advertise(request):
     return render(request, 'home/advertise.html')
 
 def guests(request):
-    guests = Guest.objects.raw(
+
+    title = 'Special Guests'
+    heading = 'Our memoeries of Honourable people, guests and celebrities.'
+
+    articles =  Guest.objects.raw(
         """
-        SELECT * 
+        SELECT *, 
+        'guest' AS Type
         FROM home_guest
         ORDER BY home_guest.date DESC
         """
-        )
+    )
+    return article_collection(request, title, heading, articles)
+
+def minutes(request):
+
+    title = 'Minutes'
+    heading = 'Minutes from our meetings.'
+
+    minutes =  Minutes.objects.raw(
+        """
+        SELECT *, 
+        'guest' AS Type
+        FROM home_minutes
+        """
+    )
+
+    paginator = Paginator(minutes, 8)
+    page = request.GET.get('page')
+    minutes = paginator.get_page(page)
+
     context = {
-        'guests' : guests
+        'minutes': minutes,    }
+    return render(request, 'home/minutes.html', context)
+
+def openArticle(request, article, article_type):
+    latestItems = getLatest()
+    context = {
+        'article' : article,
+        'latestItems' : latestItems,
+        'type' : article_type,
     }
-    return render(request, 'home/guests.html', context)
+    return render(request, 'home/article.html', context)
 
 def openEvent(request, id):
     event = Event_Past.objects.get(id=id)
-    latestItems = getLatest()
-
-    context = {
-        'article' : event,
-        'latestItems' : latestItems
-    }
-    return render(request, 'home/article.html', context)
+    return openArticle(request, event, 'events-past')
 
 
 def openProject(request, id):
     project = Project.objects.get(id=id)
-    latestItems = getLatest()
-    context = {
-        'article' : project,
-        'latestItems' : latestItems
-    }
-    return render(request, 'home/article.html', context)
+    return openArticle(request, project, 'project')
 
 
 def openGuest(request, id):
     guest = Guest.objects.get(id=id)
-    latestItems = getLatest()
-    context = {
-        'article' : guest,
-        'latestItems' : latestItems
-    }
-    return render(request, 'home/article.html', context)
+    return openArticle(request, guest, 'guests')
 
 def sendFeedback(request):
     response = 0
@@ -179,7 +225,6 @@ def sendFeedback(request):
         message = request.POST.get('message')
         body = "Name: %s\nEmail: %s\nMessage: %s\n" % (name, email, message)
         response == send_email(subject, body, email)
-
     return feedback(request)
 
 def send_email(subject, msg, email):
@@ -190,6 +235,7 @@ def send_email(subject, msg, email):
         server.login('pnsuk.org.es@outlook.com', 'Society@7')
         message = 'Subject: {}\n\n{}'.format(subject, msg)
         server.sendmail('pnsuk.org.es@outlook.com', 'pnsuk.org@hotmail.com', message)
+        server.sendmail('pnsuk.org.es@outlook.com', 'peterborough-nepalisociety@hotmail.com', message)
         server.sendmail('pnsuk.org.es@outlook.com', email, 'Your message to PNS has been sent, Thank you for your feedback.')
 
         server.quit()

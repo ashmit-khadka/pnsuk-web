@@ -12,5 +12,7 @@ urlpatterns = [
     path('event/<id>/', views.openEvent),
     path('guest/<id>/', views.openGuest),   
     path('guests/', views.guests),    
-    path('sendFeedback/', views.sendFeedback),   
+    path('sendFeedback/', views.sendFeedback),
+    path('aid/', views.aid),   
+    path('minutes/', views.minutes)
 ]

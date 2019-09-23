@@ -5,6 +5,7 @@ from .models import Policy
 from .models import Project
 from .models import Event_Past
 from .models import Guest
+from .models import Minutes
 from django import forms
  
 
@@ -77,4 +78,4 @@ admin.site.register(Policy, PolicyAdmin)
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(Event_Past, Event_PastAdmin)
 admin.site.register(Guest, GuestAdmin)
-
+admin.site.register(Minutes)

@@ -3,10 +3,12 @@
 <html>
     <head>        
         <meta charset="UTF-8">
+        <meta name="description" content="{% block description %} {% endblock %}">
+        <meta name="keywords" content="PNS PNSUK Peterborough Nepalese Society {% block keywords %} {% endblock %}">
+        <meta name="author" content="Ashmit Khadka">
         <title>
             PNS | {% block title %} {% endblock %}
         </title>
-        <meta name="description" content="{% block description %} {% endblock %}">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -56,7 +58,7 @@
                 {%if adverts%}
                 {% for ad in adverts %}        
                 <div class="news-side" onclick="openAdvert('{{ad.url}}')">
-                    <img class="news-img" src="{{ad.img}}">
+                    <img class="news-img" src="{{ad.picture.url}} ">
                     <h5 class="news-title">{{ad.name}}</h5>
                     <p class="font-weight-light">{{ad.description}}</p>
                 </div>
