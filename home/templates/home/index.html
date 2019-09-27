@@ -274,7 +274,7 @@
                 {%if adverts%}
                 {% for ad in adverts %}        
                 <div class="news-side" onclick="openAdvert('{{ad.url}}')">
-                    <img class="news-img" src="{{ad.picture.url}}">
+                    <img class="news-img" src="{{ad.img}}">
                     <h5 class="news-title">{{ad.name}}</h5>
                     <p class="font-weight-light">{{ad.description}}</p>
                 </div>
