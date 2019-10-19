@@ -3,7 +3,7 @@ from home.models import Project
 from home.models import Policy
 
 def core(request):
-    adverts = Advert.objects.all().order_by('?')
+    adverts = Advert.objects.all().order_by('ranking')
     projects = Project.objects.all().raw(
         """
         SELECT *

@@ -143,7 +143,7 @@ def events(request):
         """
         SELECT * 
         FROM home_event
-        WHERE home_event.date > CURRENT_TIMESTAMP
+        WHERE home_event.date > DATETIME('NOW', '-2 DAYS')
         ORDER BY home_event.date ASC
         """
     ) 

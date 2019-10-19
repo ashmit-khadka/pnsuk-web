@@ -7,4 +7,5 @@ class Advert(models.Model):
     url = models.CharField(max_length=500)
     picture = models.ImageField(upload_to='advert_imgs', blank=False, default='default/default.jfif')
     img = models.CharField(max_length=500)
+    ranking = models.IntegerField(default=0)
     

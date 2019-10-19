@@ -43,6 +43,12 @@ class PolicyAdmin( admin.ModelAdmin ):
     list_display = (
         'name',
         )
+
+class MinuteAdmin( admin.ModelAdmin ):
+    list_display = (
+        'name',
+        )
+
 class Event_PastModelForm( forms.ModelForm ):
     text = forms.CharField( widget=forms.Textarea )
     class Meta:
@@ -78,4 +84,4 @@ admin.site.register(Policy, PolicyAdmin)
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(Event_Past, Event_PastAdmin)
 admin.site.register(Guest, GuestAdmin)
-admin.site.register(Minutes)
+admin.site.register(Minutes, MinuteAdmin)
