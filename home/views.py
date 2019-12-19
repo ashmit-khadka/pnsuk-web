@@ -12,16 +12,15 @@ def index(request):
         SELECT *
         FROM home_project
         ORDER BY home_project.date DESC
-        LIMIT 2
+        LIMIT 5
         """
     )
     events = Event.objects.raw(
         """
         SELECT *
         FROM home_event
-        WHERE home_event.date > CURRENT_TIMESTAMP
         ORDER BY home_event.date ASC
-        LIMIT 3
+        LIMIT 5
         """
         ) 
 
@@ -32,7 +31,7 @@ def index(request):
         SELECT *
         FROM home_event_past    
         ORDER BY home_event_past.date DESC
-        LIMIT 2
+        LIMIT 5
         """
     )
     guests = Guest.objects.raw(
@@ -40,7 +39,7 @@ def index(request):
         SELECT *
         FROM home_guest    
         ORDER BY home_guest.date DESC
-        LIMIT 2
+        LIMIT 5
         """
     )
     context = {

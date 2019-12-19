@@ -1,0 +1,453 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>        
+        <meta charset="UTF-8">
+        <title>
+            PNS | Home
+        </title>
+        <meta name="description" content="{% block description %} {% endblock %}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="{% static 'scripts/scripts.js' %}"></script>
+        <script async src="https://cse.google.com/cse.js?cx=005679846021293940639:doe6doxzf4m"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/stylesheet.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <!--         <div class="main-header" style="background-image: url({% static 'pics/banner.png' %})">-->
+
+        {% include 'home/header.html' %}
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Please donate via this bank account and email us at <a href="mailto:pnsuk.org@hotmail.com">pnsuk.org@hotmail.com</a></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Account Name: PNS</p>
+                        <p>Bank: TSB</p>
+                        <p>Sort code: 30-96-60</p>
+                        <p>Account Number: 00152108</p>
+                        <p>Thank you for your donation, every little helps.</p>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-container">
+            <div class="row">
+                <div class="col">                
+                <div class="col bd-example">
+                    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            {% for item in front_items%}
+                            <li data-target="#carouselExampleCaptions" 
+                                    {% if item == front_items.0 %}
+                                        class="active" 
+                                    {% endif %} 
+                            ></li>
+                            {% endfor %}
+                        </ol>
+                    <div class="carousel-inner img-slider-container">
+                        {% for item in front_items%}
+                        <div class="carousel-item
+                                {% if item == front_items.0 %}
+                                    active
+                                {% endif %}" onclick="openLink('/{{item.Type}}/{{item.id}}')">
+                            <img src="{{item.picture.url}}" class="d-block w-100 carouselImg" alt="...">
+                            <div class="carousel-caption d-none d-md-block img-slider-text">
+                                <h5>{{item.title}}</h5>
+                                <p>{{item.text | truncatechars:200}}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                        </a>
+                    </div>            
+                </div>
+         
+                <div class="info" data-target="#collapseExample">
+                    <div class="const">
+                        <h4 class="">PNS at a glance</h4>
+                        <p class="font-weight-light">The Peterborough Nepalese Society (PNS) is a non-profit making community based organisation established in 2007 with the initiation of all individuals or families originally coming from Nepal and those who are living in and around Peterborough areas.
+                                PNS is now a charity organisation registered in the Charity Commission of England and Wales (Charity number 1169904) and is running successfully based on the rules and regulations as outlined in its own governing document- Peterborough Nepalese Society Constitution 2016. 
+                                PNS, based in Peterborough, (Cambridgeshire) always focuses its efforts on social cohesion and integration with British culture and values and develops a sustainable peace and harmony in and among the communities.
+                        </p>
+
+                    <button class="btn btn-outline-info" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Read more
+                        </button>
+                    </p>
+                    <div class="collapse" id="collapseExample">
+                        <div class="accordion" id="accordionExample">
+                            <p>
+                            </p>
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                <h2 class="mb-0">
+                                    <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        Goals and objectives
+                                    </button>
+                                </h2>
+                                </div>
+                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <h6>The main goals of PNS are:</h6> 
+                                        <ul>
+                                            <li>To further or benefit the residents of Peterborough, and in particular but not exclusively residents of Nepalese descent, advancing education and providing facilities in the interests of social welfare for recreation and leisure time occupation with the objective of improving the conditions of life for the residents.</li>
+                                            <li>The relief of those in need in Nepal, by reason of youth, age, ill-health, disability, financial hardship or other disadvantage by making grants of financial assistance.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>    
+                            <div class="card">
+                                <div class="card-header" id="headingTwo">
+                                <h2 class="mb-0">
+                                    <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Objectives
+                                    </button>
+                                </h2>
+                                </div>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <h6>The objectives of PNS are:</h6>
+                                        <ul>
+                                            <li>To work closely with the Peterborough city council and other organisations and communities groups towards promoting peace, harmony and social welfare amongst people of different communities and faiths.</li>
+                                            <li>To help PNS members familiarise with the core British values, and identify how its members can benefit from the public services.</li>
+                                            <li>To organise culturally-tailored events like yoga, meditation, entertainment programmes, Nepali and English language classes, children focused programmes, educational and cultural tour and other healthy life-style events such as football and athletics.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                <h2 class="mb-0">
+                                    <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        Organisational set up of PNS
+                                    </button>
+                                </h2>
+                                </div>
+                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <h6>PNS setup:</h6>
+                                        In order to achieve its stated goals and objectives and to make functionally more active, PNS has two organisational tiers. The policies and major projects are being formulated and approved by a Board of Trustees comprising of 6 trustees. The approved policies and programmes are being implemented by a Management Committee which comprised of 17 executive members. The members of both trustees and   Management Committee are elected on the annual general meeting (AGM) every two years. In addition, the board of trustees and management committee are supported by 10 advisers in order to run different activities of PNS.
+                                        PNS has its own bank account to run its financial transactions and whatever we receive donations and supports that are deposited to our bank account. The current account system is transparent and incomes and expenditures are shown to members every month via social media (emails, viber and whatsapp) by our manager/ treasurer. We also update the charity’s annual returns to the Charity Commission every year.
+                                        Since the establishment of PNS in September 2007, number of its members has been ever increasing and now more than 100 families and nearly 300 …. people from Peterborough, Spalding, Leicester, Huntingdon are affiliated with this charity organisation.
+                                        Every year, PNS organises 4-6 charity fund raising nights (events) with great fun and entertainments. Every occasion, huge numbers of members are taking part in the programmes with great enthusiastic and fun. Moreover, they are very generous in supporting the activities and providing the donation to the charity. This is main reason the charity is running successfully and is able to collect donation for the good cause. The charity annual turnover is about £3000 and is increasing every year.  At the moment, we are running a project (budget £9000) of language teaching programmes for young children funded by National lottery.
+                                        PNS supported the victims of natural calamities (earth quake) in Nepal in 2016 and helped financially to those who are economically very poor (5 sick people) last year. It has a pleasant history of supporting other organisations in the past. 
+                                        We have also organised community cleaning campaign on the occasion of World Environment Day (June 5) in the past with the kind support of the Council’s Environment Department.
+                                        We invited councillors and MPs in most of our programmes and we are sure they are aware of our activities and gave us words to help us out on our endeavours. 
+                                        Currently PNS has to spend a huge amount of its resources for hiring halls and premises for organising its annual programmes. We have realised that if we are able to have own premises, we will save our hardly earned resources which we can  utilise it in more productive welfare sectors.
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="headingFour">
+                                    <h2 class="mb-0">
+                                        <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                            Nepal at a Glance
+                                        </button>
+                                    </h2>
+                                    </div>
+                                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                            <h6>Welcome to Nepal:</h6>
+                
+                                            Nepal is a landlocked country situated in the lap of Himalayas in between India and China with total area of 1,47,181 square km. It has got an amazing diversity of landscapes and cultural heritage. Eight of the world’s highest mountains are in Nepal including Mount Everest, the highest peak on the earth. UNESCO has listed four world heritage sites in Nepal. Two National parks, culturally rich Kathmandu Valley and Lumbini, the birthplace of Lord Buddha, are all listed as UNESCO cultural world heritage sites. Nepal is the habitat of Gurkhas and Sherpas who are known world-wide for their bravery and amazing mountaineering skills, respectively.
+                                            Nepalese people have a long-standing tradition of celebrating the great Hindu festivals like Dashain, Deewali, Teej etc. Those festivals mean a lot to these people, and even more, especially when they are away from Nepal.
+                                            The people of Nepal and UK share a deep mutual relationship of over 200 years. Nepal established its diplomatic relations with the UK in 1816 AD. Nepal takes a strong pride to the fact that the Gurkhas have been serving in the British Army for over 200 years.
+                                                                        
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="row page-section-header">
+                        <h4 class="col section-header">Latest in Our Community</h4>
+                        <button type="button" class="btn btn-outline-secondary col-2 section-link" onclick="openLink('/news')">More</button>
+                    </div>
+                    <hr>
+                    <div class="row">   
+                        {% for article in event_past %}                        
+                        <div class="col item-container" onclick="openEvent({{article.id}})"> 
+                            <img class="item-img" src="{{article.picture.url}}">         
+                            <div class="item-info">
+                                <button type="button" class="btn btn-info">#News</button>
+                                <h5 class="">{{article.title}}</h5>
+                                <p>{{article.date}}</p>
+                                <p class="font-weight-light">{{article.text | truncatechars:150}}</p>
+                                <p class="">Read more</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="row page-section-header">
+                        <h4 class="col section-header">Projects</h4>
+                    </div>                    
+                    <hr>
+                    <div class="row">
+                        {% for article in projects %}                        
+                        <div class="col item-container" onclick="openProject({{article.id}})"> 
+                            <img class="item-img" src="{{article.picture.url}}"> 
+                            <div class="item-info">        
+                                <button type="button" class="btn btn-success">#Project</button>
+                                <h5 class="">{{article.title}}</h5>
+                                <p>{{article.date}}</p>
+                                <p class="font-weight-light">{{article.text | truncatechars:150}}</p>
+                                <p class="">Read more</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="row page-section-header">
+                        <h4 class="col section-header">Upcomming Events</h4>
+                        <button type="button" class="btn btn-outline-secondary col-2 section-link" onclick="openLink('/events')">More</button>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        {% for event in events|slice:":2" %}
+                        <div class="col item-container item-info" onclick="openLink('/events')">
+                            <div class="row">
+                                <div class="col">
+                                    <button type="button" class="btn btn-warning">#Event</button>
+                                    <h5>{{event.name}}</h5>
+                                    <img class="item-text-icon" src="{% static 'pics/calendar.svg' %}">
+                                    <p class="">{{event.date}} {{event.date|date:"l"}}.</p>
+                                    <img class="item-text-icon" src="{% static 'pics/location.svg' %}">
+                                    <p class="">{{event.venue}}</p> 
+                                </div>
+                            </div>                       
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="row page-section-header">
+                        <h4 class="col section-header">Special Guests</h4>
+                        <button type="button" class="btn btn-outline-secondary col-2 section-link" onclick="openLink('/guests')">More</button>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        {% for guest in guests %}
+                        <div class="col item-container" onclick="openGuest({{guest.id}})"> 
+                            <img class="item-img" src="{{guest.picture.url}}">         
+                            <div class="item-info">
+                                <button type="button" class="btn btn-danger">#Guest</button>
+                                <h5 class="">{{guest.title}}</h5>
+                                <p>{{guest.date}}</p>
+                                <p class="font-weight-light">{{guest.text | truncatechars:150}}</p>
+                                <p class="">Read more</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>  
+            </div>
+            </div>
+            <div class="col-2">
+                <div class="donate" data-toggle="modal" data-target="#exampleModal">
+                    <img class="action-img" src="{% static 'pics/donate.svg' %}">
+                    <h5 class="text-center font-italic">Donate to our charity</h5>
+                </div>
+                <div class="news-side" onclick="openAdvert('/advertise')" style="text-align: center"> 
+                    <h5 class="news-title">Advertise here</h5>
+                    <p>Click to learn more</p>
+                </div>
+                {%if adverts%}
+                {% for ad in adverts %}        
+                <div class="news-side" onclick="openAdvert('{{ad.url}}')">
+                    <img class="news-img" src="{{ad.img}}">
+                    <h5 class="news-title">{{ad.name}}</h5>
+                    <p class="font-weight-light">{{ad.description}}</p>
+                </div>
+                {% endfor %}
+                {% endif %} 
+                {% for event in events %}
+                    <div class="news-side" onclick="openLink('/events')">
+                        <button type="button" class="btn btn-warning">#Event</button>
+                        <h5>{{event.name}}</h5>
+                        <img class="item-text-icon" src="{% static 'pics/calendar.svg' %}">
+                        <p class="">{{event.date}} {{event.date|date:"l"}}.</p>
+                        <img class="item-text-icon" src="{% static 'pics/location.svg' %}">
+                        <p class="">{{event.venue}}</p> 
+                    </div>
+                {% endfor %} 
+            </div>
+            {% include 'home/footer.html' %}
+        </div>        
+    </body>
+</html>
+
+<style>
+    html 
+    {
+    }
+    body
+    {
+    }
+
+
+    div.header{
+        background-color: cornflowerblue;
+    }
+    div.home-tile
+    {
+        background-size: cover;
+
+        height: 50%;
+    }
+    img.event{
+        width: 100%;
+
+    }
+    div.item-container
+    {   
+        padding: 10px; 
+        margin: 0px 25px 20px;
+        min-width: 500px;
+        max-width: 500px;
+        box-shadow: 0 4px 8px 0 rgba(212, 212, 212, 0.2), 0 15px 15px 0 rgba(138, 138, 138, 0.19);
+    }
+    
+
+    div.item-container:hover
+    {   
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+        background-color: whitesmoke;
+    }
+
+    div.item-info
+    {   
+        padding: 0px 20px 30px;
+    }
+
+
+    img.item-img
+    {
+        margin-bottom: 20px; 
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+    
+    .item-container button
+    {
+        margin-bottom: 20px; 
+    }
+
+    div.page-container
+    {
+        width: 1300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    img.mini-tile
+    {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .middle 
+    {
+        transition: .5s ease;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    .text 
+    {
+        background-color: #4CAF50;
+        color: white;
+        font-size: 16px;
+        padding: 16px 32px;
+    }
+    hr.style1{
+        margin: 40px 0px;
+        border-top: 1px solid #dadada;
+    }
+    img.item-text-icon
+    {
+        float: left;
+        height: 1rem; 
+        margin-right: 10px;
+        top: 50px;        
+    }
+
+    p.item-label
+    {
+        margin: 5px;
+    }
+
+    .section-header
+    {
+        margin: 30px 50px 0px;
+    }
+
+    .section-link
+    {
+        margin: 25px 80px 0px 0px;
+
+        font-style: italic;
+        color: #3f3f3f;
+    }
+
+    div.donate
+    {
+        margin: 0px 0px 30px;
+        padding: 20px;
+        cursor: pointer;
+        background-color: rgb(252, 252, 252);
+        box-shadow: 0 4px 8px 0 rgba(212, 212, 212, 0.2), 0 15px 15px 0 rgba(138, 138, 138, 0.19);
+
+    }
+
+    div.donate:hover
+    {
+        transition: background-color 0.2s ease;
+        background-color: rgb(242, 242, 242);
+    }
+
+    img.item-img
+    {
+        width: 100%;
+    }
+
+    div.item-side
+    {}
+
+    div.img-slider-text
+    {
+        background-color: rgba(30, 30, 30, 0.6);
+
+    }
+
+    div.img-slider-container
+    {
+        cursor: pointer;
+    }
+</style>

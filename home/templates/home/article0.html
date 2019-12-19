@@ -1,0 +1,88 @@
+{% extends 'home/base.html' %}
+{% load static from staticfiles %}
+{% block description %} {{article.text}} {% endblock %}
+{% block keywords %}{{ article.title }}{% endblock %}
+{% block title %}{{ article.title }}{% endblock %}
+{% block content %}
+<style>
+    div.article-container
+    {
+        width: 1100px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    div.article{
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: left;
+        margin: 30px 10px;
+    }
+    img.articleImg{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 30px;
+        width: 100%;
+    }
+    p.text{
+        margin-top: 20px
+    }
+
+    img.article-img
+    {        
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        height: 500px;
+    }
+    div.article-img-backdrop
+    {
+        background-color: whitesmoke;
+    }
+
+    .article-text
+    {
+        margin-top: 20px;
+    }
+
+    .article-latest
+    {
+        margin-top: 150px;
+    }
+
+</style>
+<script>
+    function openArticle(id){
+        location.href = "/article/"+id+"/";
+    }
+</script>
+    <nav aria-label="breadcrumb" >
+        <ol class="breadcrumb" style="background-color: whitesmoke">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/{{ type }}">{{ type|title }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ article.title }}</li>
+        </ol>
+    </nav>     
+    <div class="article">
+        <h1>{{article.title}}</h1>
+        <p class="font-italic">{{article.date}}</p>
+        <div class="article-img-backdrop" onclick="openLink('{{article.picture.url}}')">
+            <img class="article-img" src="{{article.picture.url}}">
+        </div>
+        <p class="article-text">{{article.text}}</p>
+    </div>
+
+    <div class="article-latest">
+        <h5>Read the lastest</h5>
+        <div class="row">
+            {% load static from staticfiles %}
+            {% for article in latestItems|slice:":3"  %}
+                <div class="page-element col" onclick="openLink('/{{article.Type}}/{{article.id}}')">
+                    <img class="page-element-img" src="{{article.picture.url}}">
+                    <h4 class="news-title">{{article.title}}</h4>
+                    <p>{{article.text|truncatechars:100}}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+

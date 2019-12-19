@@ -1,47 +1,208 @@
-{% extends 'home/base.html' %}
 {% load static from staticfiles %}
-{% block description %} {{article.heading}} {% endblock %}
-{% block keywords %}{{ article.title }}{% endblock %}
-{% block title %} News {% endblock %}
-{% block content %}
-    <div class="page-info">
-        <div class="content-container">
-        <h1>{{ title }}</h1>
-        <p class="lead">{{ heading }}</p>
-        </div>
-    </div>
-    {% if articles %}
-    <p class="text-right font-italic">Showing articles {{ articles | length }} of {{ articles | length }}</p>
-    {% for article in articles %}
-        <!--<p class="article-date">{{article.date}}</p>-->
-        <div class="row page-element" onclick="openLink('/{{article.Type}}/{{article.id}}')">
-            <div class="col-4">
-                <img class="page-element-img" src="{{article.picture.url}} ">
-            </div>
-            <div class="col">
-                <h3 class="">{{ article.title }} </h3>
-                <p class="">{{ article.date }}</p>
-                <p class="font-weight-light">{{ article.text | truncatechars:150 }}</p>  
-                {% if article.text|length > 150 %}
-                    <a><p>Click to read more</p></a>
-                {% endif %}
-            </div>
-        </div>
-    {% endfor %}
-    <nav class="mt-5" aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-            {% if articles.has_previous %}
-                <li class="page-item"><a class="page-link" href="?page={{ articles.previous_page_number }}">Previous</a></li>
-            {% endif %}
 
-            {% for page_number in articles.paginator.page_range %}
-                <li class="page-item"><a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a></li>
-            {% endfor %}
+<!DOCTYPE html>
+<html lang="en">
 
-            {% if articles.has_next %}
-                <li class="page-item"><a class="page-link" href="?page={{ articles.next_page_number }}">Next</a></li>
-            {% endif %}
-        </ul>
-    </nav>
-    {% endif %}
-{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Video Mag - HTML Template for Video &amp; Magazine</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'template/favicon.ico' %}">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="{% static 'template/style.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/stylesheet.css' %}">
+
+</head>
+
+<body>
+
+
+    <!-- ##### Header Area Start ##### -->
+    {% include 'home/header.html' %}
+
+    <!-- ##### Header Area End ##### -->
+
+    <!-- ##### Tabs Area Start ##### -->
+
+    <!-- ##### Tabs Area End ##### -->
+
+    <!-- ##### Catagory Area Start ##### -->
+    <section class="catagory-area mt-30">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-9">
+                    <div class="row">
+
+                        {% for article in articles %}
+                        <!-- Single Blog Post -->
+                        <div class="col-md-6">
+                            <div class="single-blog-post style2 mb-50">
+                                <div class="blog-thumb mb-30">
+                                    <img src="{{article.picture.url}}" alt="">
+                                    <!-- Play Button -->
+                                </div>
+                                <div class="blog-content">
+                                    <a href="#" class="post-tag">Featured</a>
+                                    <a href="#" class="post-title">{{ article.title }} </a>
+                                    <div class="post-meta">
+                                        <a href="#"><img src="img/core-img/author2.png" alt=""> By James Smith</a>
+                                        <a href="#"><img src="img/core-img/calendar2.png" alt=""> July 23, 2018</a>
+                                        <a href="#"><img src="img/core-img/chat2.png" alt=""> 5</a>
+                                        <a href="#"><img src="img/core-img/like2.png" alt=""> 12k</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+       
+                    </div>
+                    <!-- Pagination -->
+                    <div class="row mb-100">
+                        <div class="col-12">
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination mt-50">
+                                    <li class="page-item active"><a class="page-link" href="#">01</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">02</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">03</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">04</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="sidebar-area mb-100">
+                        <!-- Single Sidebar Widget -->
+
+
+                        <!-- Single Sidebar Widget -->
+                        <div class="single-widget-area mb-50">
+                       
+
+                            <!-- Single Blog Post -->
+                            <div class="single-blog-post style4 d-flex mb-30">
+                                <div class="blog-thumb">
+                                    <img src="img/bg-img/20.jpg" alt="">
+                                    <!-- Play Button -->
+                                    <a href="#" class="video-play-btn style3"><i class="fa fa-play"></i></a>
+                                </div>
+                                <div class="blog-content">
+                                    <a href="#" class="post-tag">Featured</a>
+                                    <a href="#" class="post-title">Fashion Week 2018 -Spring/summer</a>
+                                    <div class="post-meta">
+                                        <a href="#"><img src="img/core-img/chat2.png" alt=""> 5</a>
+                                        <a href="#"><img src="img/core-img/like2.png" alt=""> 12k</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                         
+                          
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Catagory Area End ##### -->
+
+    <!-- ##### Footer Area Start ##### -->
+    <footer class="footer-area section-padding-100">
+        <div class="container-fluid">
+            <div class="row justify-content-between">
+                <!-- Footer Content -->
+                <div class="col-12 col-lg-4">
+                    <div class="footer-content">
+                        <!-- Logo -->
+                        <a href="index.html" class="foo-logo"><img src="img/core-img/logo.png" alt=""></a>
+                        <p>Donec cursus eros et risus scelerisque, sit amet ultrices arcu scelerisque. Sed consequat fermentum turpis, vulputate maximus.Donec cursus eros et risus scelerisque, sit amet ultrices arcu scelerisque. Sed consequat fermentum turpis, vulputate maximus</p>
+                        <div class="footer-social-info d-flex">
+                            <a href="#"><i class="fa fa-pinterest"></i></a>
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-dribbble"></i></a>
+                            <a href="#"><i class="fa fa-behance"></i></a>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer Content -->
+                <div class="col-12 col-lg-7 col-xl-6">
+                    <div class="footer-content d-flex flex-wrap">
+                        <!-- Footer Nav -->
+                        <div class="footer-nav">
+                            <h5 class="widget-title">Usefull Links</h5>
+                            <nav>
+                                <ul>
+                                    <li><a href="#">About us</a></li>
+                                    <li><a href="#">Travel</a></li>
+                                    <li><a href="#">Games</a></li>
+                                    <li><a href="#">Categories</a></li>
+                                    <li><a href="#">Testimonials</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                        <!-- Footer Nav -->
+                        <div class="footer-nav">
+                            <h5 class="widget-title">About Us</h5>
+                            <nav>
+                                <ul>
+                                    <li><a href="#">Contact Us</a></li>
+                                    <li><a href="#">Jobs</a></li>
+                                    <li><a href="#">Terms</a></li>
+                                    <li><a href="#">Conditions</a></li>
+                                    <li><a href="#">About</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                        <!-- Video Catagory -->
+                        <div class="video-catagory">
+                            <h5 class="widget-title">Video Categories</h5>
+                            <ul>
+                                <li><a href="#"><span>Travel</span> <span>20</span></a></li>
+                                <li><a href="#"><span>Technology</span> <span>10</span></a></li>
+                                <li><a href="#"><span>Fashion</span> <span>71</span></a></li>
+                                <li><a href="#"><span>Animals</span> <span>15</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <!-- Copywrite Text -->
+                    <p class="copywrite-text"><a href="#"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ##### Footer Area End ##### -->
+
+    <!-- ##### All Javascript Script ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="js/active.js"></script>
+</body>
+
+</html>
