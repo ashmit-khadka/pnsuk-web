@@ -53,7 +53,7 @@ def index(request):
 
 def article_collection(request, title, heading, articles): 
 
-    paginator = Paginator(articles, 8)
+    paginator = Paginator(articles, 9)
     page = request.GET.get('page')
     articles = paginator.get_page(page)
 

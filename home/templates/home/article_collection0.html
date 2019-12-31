@@ -14,7 +14,7 @@
     <p class="text-right font-italic">Showing articles {{ articles | length }} of {{ articles | length }}</p>
     {% for article in articles %}
         <!--<p class="article-date">{{article.date}}</p>-->
-        <div class="row page-element" onclick="openLink('/{{article.Type}}/{{article.id}}')">
+        <div class="row page-element wow fadeInUp" data-wow-delay="50ms" onclick="openLink('/{{article.Type}}/{{article.id}}')">
             <div class="col-4">
                 <img class="page-element-img" src="{{article.picture.url}} ">
             </div>
