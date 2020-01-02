@@ -1,82 +1,91 @@
 {% load static from staticfiles %}
-<nav class="navbar navbar-expand-lg " style="background-color: #afc2cb">
-    <ul class="nav nav-bar page-container">
-            <li class="nav-item active">
-                <a class="nav-link nav-bar-link" href="/"><b>Home</b> <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link nav-bar-link" href="/news"><b>News</b></a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link nav-bar-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <b>Events</b>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/events">Upcoming</a>
-                    <a class="dropdown-item" href="/events-past">Past</a>
-                    <a class="dropdown-item" href="/aid">Charity Aid</a>
-                    <a class="dropdown-item" href="/guests">Special Guests</a>
 
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link nav-bar-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <b>Projects</b>
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    {% for key, value in nav_item_projects.items %}
-                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">{{key}}</a>
-                        <ul class="dropdown-menu">
-                            {% for project in value %}
-                                <li><a class="dropdown-item" href="/project/{{project.id}}">{{project.title}}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </li>   
-            <li class="nav-item dropdown">
-                <a class="nav-link nav-bar-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <b>Committees</b>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/members/trustees">Trustee Board</a>
-                    <a class="dropdown-item" href="/members/managment">Management Committee</a>
-                    <a class="dropdown-item" href="/members/advisors">Advisory Body</a>
-                    <a class="dropdown-item" href="/members/membership">Membership Form</a>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #afc2cb">
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse page-container" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link nav-bar-link" href="/"><b>Home</b> <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link nav-bar-link" href="/news"><b>News</b></a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link nav-bar-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <b>Events</b>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/events">Upcoming</a>
+                <a class="dropdown-item" href="/events-past">Past</a>
+                <a class="dropdown-item" href="/aid">Charity Aid</a>
+                <a class="dropdown-item" href="/guests">Special Guests</a>
 
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link nav-bar-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <b>About Us</b>
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" href="{% static 'docs/constitution.pdf' %}">Constitution</a></li>
-                    <li><a class="dropdown-item" href="{% static 'docs/PNS_glance.pdf' %}">PNS at a Glance</a></li>
-                    <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Policy Documents</a>
-                        <ul class="dropdown-menu">
-                            {% for policy in policies %}
-                                <li><a class="dropdown-item" href="{{policy.file.url}}">{{policy.name}}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-                    <li><a class="dropdown-item" href="/minutes">Minutes</a></li>
-                </ul>
-            </li>            
-            <li class="nav-item">
-                <a class="nav-link nav-bar-link" href="/advertise"><b>Advertise</b></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link nav-bar-link" href="/feedback"><b>Contact Us</b></a>
-            </li>
-            <div class="form-inline my-2 my-lg-0 search-bar">
-                <input class="page-search form-control mr-sm-2" id="search-query" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-light my-2 my-sm-0" type="button" onclick="search(document.getElementById('search-query').value)">Search</button>
             </div>
-        </ul>
-    </nav>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link nav-bar-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <b>Projects</b>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                {% for key, value in nav_item_projects.items %}
+                <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">{{key}}</a>
+                    <ul class="dropdown-menu">
+                        {% for project in value %}
+                            <li><a class="dropdown-item" href="/project/{{project.id}}">{{project.title}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% endfor %}
+            </ul>
+        </li>   
+        <li class="nav-item dropdown">
+            <a class="nav-link nav-bar-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <b>Committees</b>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/members/trustees">Trustee Board</a>
+                <a class="dropdown-item" href="/members/managment">Management Committee</a>
+                <a class="dropdown-item" href="/members/advisors">Advisory Body</a>
+                <a class="dropdown-item" href="/members/membership">Membership Form</a>
 
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link nav-bar-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <b>About Us</b>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="{% static 'docs/constitution.pdf' %}">Constitution</a></li>
+                <li><a class="dropdown-item" href="{% static 'docs/PNS_glance.pdf' %}">PNS at a Glance</a></li>
+                <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">Policy Documents</a>
+                    <ul class="dropdown-menu">
+                        {% for policy in policies %}
+                            <li><a class="dropdown-item" href="{{policy.file.url}}">{{policy.name}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li><a class="dropdown-item" href="/minutes">Minutes</a></li>
+            </ul>
+        </li>            
+        <li class="nav-item">
+            <a class="nav-link nav-bar-link" href="/advertise"><b>Advertise</b></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link nav-bar-link" href="/feedback"><b>Contact Us</b></a>
+        </li>
+      </ul>
+      <div class="form-inline my-2 my-lg-0 search-bar">
+        <input class="page-search form-control mr-sm-2" id="search-query" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn btn-light my-2 my-sm-0" type="button" onclick="search(document.getElementById('search-query').value)">Search</button>
+    </div>
+    </div>
+  </nav>
+
+  
  <style>   
     .dropdown-submenu {
         position: relative;

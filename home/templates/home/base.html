@@ -49,6 +49,7 @@
         <script src="{% static 'template/js/active.js' %}"></script>
         <!-- Header -->
         {% include 'home/header.html' %}
+        {% include 'home/nav.html' %}
 
         <!--Page wrapper-->
         <div class="row page-container">
@@ -68,10 +69,12 @@
 
                     {%if adverts%}
                     {% for ad in adverts %}        
-                    <div class="news-side" onclick="openAdvert('{{ad.url}}')">
-                        <img class="news-img" src="{{ad.img}}">
-                        <h5 class="news-title">{{ad.name}}</h5>
-                        <p class="">{{ad.description}}</p>
+                    <div class="news-side row" onclick="openAdvert('{{ad.url}}')">
+                        <img class="news-img col-lg col-6" src="{{ad.img}}">
+                        <div class="col">
+                            <h5 class="news-title">{{ad.name}}</h5>
+                            <p class="">{{ad.description}}</p>    
+                        </div>
                     </div>
                     {% endfor %}
                     {% endif %} 
