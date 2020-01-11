@@ -12,16 +12,15 @@ def index(request):
         SELECT *
         FROM home_project
         ORDER BY home_project.date DESC
-        LIMIT 2
+        LIMIT 5
         """
     )
     events = Event.objects.raw(
         """
         SELECT *
         FROM home_event
-        WHERE home_event.date > CURRENT_TIMESTAMP
         ORDER BY home_event.date ASC
-        LIMIT 3
+        LIMIT 5
         """
         ) 
 
@@ -32,7 +31,7 @@ def index(request):
         SELECT *
         FROM home_event_past    
         ORDER BY home_event_past.date DESC
-        LIMIT 2
+        LIMIT 5
         """
     )
     guests = Guest.objects.raw(
@@ -40,7 +39,7 @@ def index(request):
         SELECT *
         FROM home_guest    
         ORDER BY home_guest.date DESC
-        LIMIT 2
+        LIMIT 5
         """
     )
     context = {
@@ -54,7 +53,7 @@ def index(request):
 
 def article_collection(request, title, heading, articles): 
 
-    paginator = Paginator(articles, 8)
+    paginator = Paginator(articles, 9)
     page = request.GET.get('page')
     articles = paginator.get_page(page)
 
@@ -139,6 +138,10 @@ def events_past(request):
 
 def events(request):    
 
+    title = 'Upcoming Events'
+    heading = 'Our upcoming meetings, parties and gatherings.'
+
+
     events = Event.objects.raw(
         """
         SELECT * 
@@ -149,6 +152,8 @@ def events(request):
     ) 
     context = {
         'events' : events,
+        'title' : title,
+        'heading' : heading
     }
     return render(request, 'home/events_upcoming.html', context)
 
@@ -189,7 +194,10 @@ def minutes(request):
     minutes = paginator.get_page(page)
 
     context = {
-        'minutes': minutes,    }
+        'minutes': minutes,
+        'title' : title,
+        'heading' : heading
+    }
     return render(request, 'home/minutes.html', context)
 
 def openArticle(request, article, article_type):

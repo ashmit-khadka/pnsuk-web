@@ -1,27 +1,51 @@
 {% load static from staticfiles %}
 <!DOCTYPE html>
-<html>
-    <head>        
+<html lang="en">
+    <head>
+        <!--Meta-->
         <meta charset="UTF-8">
+        <meta name="description" content="">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="{% block description %} {% endblock %}">
         <meta name="keywords" content="PNS PNSUK Peterborough Nepalese Society {% block keywords %} {% endblock %}">
         <meta name="author" content="Ashmit Khadka">
+
+        <!--Title-->
         <title>
             PNS | {% block title %} {% endblock %}
         </title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <script src="{% static 'scripts/scripts.js' %}"></script>
-        <script async src="https://cse.google.com/cse.js?cx=005679846021293940639:doe6doxzf4m"></script>
-        <link rel="stylesheet" type="text/css" href="{% static 'styles/stylesheet.css' %}">
-    </head>
-    <body>
-        <!--         <div class="main-header" style="background-image: url({% static 'pics/banner.png' %})">-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-        {% include 'home/header.html' %}
-        <!-- Modal -->
+        <!--Scripts-->
+        
+        <script src="{% static 'scripts/scripts.js' %}"></script>
+
+
+        <!-- Favicon -->
+        <link rel="icon" href="{% static 'template/favicon.ico' %}">
+
+        <!-- Stylesheet -->
+        <link rel="stylesheet" href="{% static 'template/style.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/stylesheet.css' %}">
+
+            <!-- ##### All Javascript Script ##### -->
+        <!-- jQuery-2.2.4 js -->
+ 
+
+    </head>
+
+    <body>
+        <script src="{% static 'template/js/jquery/jquery-2.2.4.min.js' %}"></script>
+        <!-- Popper js -->
+        <script src="{% static 'template/js/bootstrap/popper.min.js' %}"></script>
+        <!-- Bootstrap js -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="{% static 'template/js/plugins/plugins.js' %}"></script>
+        <!-- Active js -->
+        <script src="{% static 'template/js/active.js' %}"></script>
+        <!-- Header -->
+
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -44,38 +68,44 @@
                 </div>
             </div>
         </div>
+
+        
+        {% include 'home/header.html' %}
+        {% include 'home/nav.html' %}
+
+        <!--Page wrapper-->
         <div class="row page-container">
-            <div class="col">
+
+            <!--Main contect area-->
+            <div class="col-lg-10 mt-30">
                 {% block content %}
-                {% endblock %} 
+                {% endblock %}
             </div>
 
-            <div class="col-2">
-                <div class="news-side" onclick="openAdvert('/advertise')" style="text-align: center"> 
-                    <h5 class="news-title">Advertise here</h5>
-                    <p>Click to learn more</p>
+            <!--Advert area-->
+            <div class="col-lg-2 mt-30">
+                    <div class="donate mb-30" data-toggle="modal" data-target="#exampleModal">
+                        <img class="action-img" src="{% static 'pics/donate.svg' %}">
+                        <h5 class="text-center font-italic">Donate to our charity</h5>
+                    </div>
+
+                    {%if adverts%}
+                    {% for ad in adverts %}        
+                    <div class="news-side row" onclick="openAdvert('{{ad.url}}')">
+                        <img class="news-img col-lg col-6" src="{{ad.img}}">
+                        <div class="col">
+                            <h5 class="news-title">{{ad.name}}</h5>
+                            <p class="">{{ad.description}}</p>    
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% endif %} 
+
                 </div>
-                {%if adverts%}
-                {% for ad in adverts %}        
-                <div class="news-side" onclick="openAdvert('{{ad.url}}')">
-                    <img class="news-img" src="{{ad.img}} ">
-                    <h5 class="news-title">{{ad.name}}</h5>
-                    <p class="font-weight-light">{{ad.description}}</p>
-                </div>
-                {% endfor %}
-                {% endif %}                
-            </div>
-        <br>
-        {% include 'home/footer.html' %}
         </div>
+
+        <!--Footer-->
+        {% include 'home/footer.html' %}
     </body>
 </html>
 
-<style>
-    div.header{
-        background-color: cornflowerblue;
-    }
-</style>
-
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.3"></script>

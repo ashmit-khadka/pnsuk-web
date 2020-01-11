@@ -1,12 +1,14 @@
 {% extends 'home/base.html' %}
 {% load static from staticfiles %}
-{% block title %} Upcoming Events {% endblock %}
+{% block description %} {{heading}} {% endblock %}
+{% block keywords %}{{ title }}{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
 {% block content %}
 <div class="page-info">
     <div class="content-container">
-    <h1 class="">Events</h1>
-    <p class="lead">Our upcoming meetings, parties and gatherings.</p>
+        <h1>{{ title }}</h1>
+        <p class="lead">{{ heading }}</p>
     </div>
 </div>
 {% if events %}

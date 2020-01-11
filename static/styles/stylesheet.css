@@ -122,7 +122,7 @@ ul.nav-container{
 }
 
 .page-container{
-    width: 1300px;
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -184,7 +184,8 @@ h4.header-print{
 }
 
 div.header-banner{
-    position: relative;
+    padding-top: 10px;
+    padding-bottom: 20px;
 }
 p.temp-classified-ads{
     margin-top: 10px;
@@ -270,6 +271,7 @@ img.page-element-img
 {
     width: 100%;
     height: 200px;
+    
     object-fit: cover;
 }
 
@@ -285,14 +287,14 @@ div.page-header-content
 }
 
 img.header-flag-left{
-    margin-top: 70px; 
-    margin-left: 190px;       
-    width: 120px;
+    margin-top: 10px; 
+    width: 80px;
+    display: block;
+    margin-left: auto;
 }
 img.header-flag-right{
-    margin-top: 70px; 
-    margin-left: -210px;
-    width: 120px;
+    margin-top: 10px; 
+    width: 80px;
 }
 .header-title{
     font-family: 'Satisfy', cursive;
@@ -300,10 +302,69 @@ img.header-flag-right{
 
 div.header-text
 {
+    text-align: center;
     margin-top: 10px;
-    margin-bottom: 40px;
 }
 .header-text-footer
 {
     font-style: italic;
+}
+
+img.advert{
+    width: 10px;
+}
+
+
+
+div.home-info-container
+{
+    background-color: #afc2cb;
+    border-radius: 0px;
+    padding: 30px;
+}
+
+div.home-info-container p 
+{
+    color: #14252c;
+    font-size: medium;
+    font-style: italic;
+}
+
+div.profile-container
+{
+    background-color: whitesmoke;
+    margin: 10px 40px;
+    padding: 30px;
+    text-align: center;
+
+}
+
+img.profile-img
+{
+    width: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px; 
+    border-radius: 50%;
+}
+
+div.central-container
+{
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+div.donate
+{
+    margin: 0px 0px 30px;
+    padding: 20px;
+    cursor: pointer;
+    background-color: rgb(252, 252, 252);
+    box-shadow: 0 4px 8px 0 rgba(212, 212, 212, 0.2), 0 15px 15px 0 rgba(138, 138, 138, 0.19);
+}
+
+div.hover-pointer:hover{
+    cursor: pointer
 }
