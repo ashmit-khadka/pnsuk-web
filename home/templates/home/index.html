@@ -1,5 +1,10 @@
 {% extends 'home/base.html' %}
 {% load static from staticfiles %}
+
+{% block description %} The Peterborough Nepalese Society (PNS) is a non-profit making community based organisation established in 2007 with the initiation of all individuals or families originally coming from Nepal and those who are living in and around Peterborough areas. {{heading}} {% endblock %}
+{% block keywords %}{{ title }}{% endblock %}
+{% block title %} Home {% endblock %}
+
 <script src="{% static 'template/js/jquery/jquery-2.2.4.min.js' %}"></script>
 <!-- Popper js -->
 <script src="{% static 'template/js/bootstrap/popper.min.js' %}"></script>
@@ -68,16 +73,15 @@
                         </div>
 
                         <div class="row">
-
                             <div class="col-12">
                                 <div class="row">
                                     {% for article in event_past|slice:"1:5" %}
 
                                     <!-- Single Blog Post -->
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 hover-pointer mb-30" onclick="openEvent({{article.id}})">
                                         <div class="single-blog-post style3 wow fadeInUp" data-wow-delay="50ms">
                                             <div class="blog-thumb ">
-                                                <img src="{{article.picture.url}}" alt="">
+                                                <img class="page-element-img" src="{{article.picture.url}}" alt="">
                                             </div>
                                             <div class="blog-content">
                                                 <a href="#" class="post-title">{{article.title}}</a>
@@ -121,8 +125,8 @@
                                 </div>
 
                                 <!-- Single Blog Post -->
-                                <div class="single-blog-post style2 mb-50 wow fadeInUp" data-wow-delay="50ms">
-                                    <div class="blog-thumb mb-5">
+                                <div class="single-blog-post style2 mb-50 wow fadeInUp hover-pointer" data-wow-delay="50ms" onclick="openProject({{projects.0.id}})"> 
+                                    <div class="blog-thumb">
                                         <img src="{{projects.0.picture.url}}" alt="">
                                         <!-- Play Button -->
                                     </div>
@@ -130,14 +134,14 @@
                                         <a href="#" class="post-tag">Featured</a>
                                         <a href="#" class="post-title">{{projects.0.title}}</a>
                                         <div class="post-meta">
-                                            <a href="#"><img src="img/core-img/calendar2.png" alt=""> July 23, 2018</a>
+                                            <a href="#"><img src="img/core-img/calendar2.png" alt=""> {{projects.0.date}}</a>
                                         </div>
                                     </div>
                                 </div>
 
                                 {% for project in projects|slice:"1:5" %}
                                 <!-- Single Blog Post -->
-                                <div class="single-blog-post style4 d-flex mb-30 wow fadeInUp" data-wow-delay="50ms">
+                                <div class="single-blog-post style4 d-flex mb-30 wow fadeInUp hover-pointer" data-wow-delay="50ms" onclick="openProject({{project.id}})"> 
                                     <div class="blog-thumb">
                                         <img src="{{project.picture.url}}" alt="">
                                         <!-- Play Button -->
@@ -158,8 +162,8 @@
                                 </div>
 
                                 <!-- Single Blog Post -->
-                                <div class="single-blog-post style2 mb-50 wow fadeInUp" data-wow-delay="50ms">
-                                    <div class="blog-thumb mb-5">
+                                <div class="single-blog-post style2 mb-50 wow fadeInUp hover-pointer" data-wow-delay="50ms" onclick="openGuest({{guests.0.id}})"> 
+                                    <div class="blog-thumb">
                                         <img src="{{guests.0.picture.url}}" alt="">
                                         <!-- Play Button -->
                                     </div>
@@ -167,17 +171,15 @@
                                         <a href="#" class="post-tag">Featured</a>
                                         <a href="#" class="post-title">{{guests.0.title}}</a>
                                         <div class="post-meta">
-                                            <a href="#"><img src="img/core-img/author2.png" alt=""> By James Smith</a>
-                                            <a href="#"><img src="img/core-img/calendar2.png" alt=""> July 23, 2018</a>
-                                            <a href="#"><img src="img/core-img/chat2.png" alt=""> 5</a>
-                                            <a href="#"><img src="img/core-img/like2.png" alt=""> 12k</a>
+                                            <a href="#"><img src="img/core-img/calendar2.png" alt=""> {{guests.0.date}}</a>
+
                                         </div>
                                     </div>
                                 </div>
 
                                 {% for guest in guests|slice:"1:5" %}
                                 <!-- Single Blog Post -->
-                                <div class="single-blog-post style4 d-flex mb-30 wow fadeInUp" data-wow-delay="50ms">
+                                <div class="single-blog-post style4 d-flex mb-30 wow fadeInUp hover-pointer" data-wow-delay="50ms" onclick="openGuest({{guest.id}})"> 
                                     <div class="blog-thumb">
                                         <img src="{{guest.picture.url}}" alt="">
                                         <!-- Play Button -->
@@ -194,7 +196,7 @@
 
                             <!-- July Top News -->
                             <div class="col-12 col-md-6 col-lg-4">
-                                <div class="section-heading wow fadeInUp" data-wow-delay="50ms">
+                                <div class="section-heading wow fadeInUp hover-pointer" data-wow-delay="50ms">
                                     <h2>Events</h2>
                                 </div>
 

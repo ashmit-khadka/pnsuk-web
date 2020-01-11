@@ -184,7 +184,8 @@ h4.header-print{
 }
 
 div.header-banner{
-    position: relative;
+    padding-top: 10px;
+    padding-bottom: 20px;
 }
 p.temp-classified-ads{
     margin-top: 10px;
@@ -269,6 +270,7 @@ div.page-element:hover
 img.page-element-img
 {
     width: 100%;
+    height: 200px;
     
     object-fit: cover;
 }
@@ -286,12 +288,12 @@ div.page-header-content
 
 img.header-flag-left{
     margin-top: 10px; 
-    margin-left: 300px;       
     width: 80px;
+    display: block;
+    margin-left: auto;
 }
 img.header-flag-right{
     margin-top: 10px; 
-    margin-left: -300px;
     width: 80px;
 }
 .header-title{
@@ -300,8 +302,8 @@ img.header-flag-right{
 
 div.header-text
 {
+    text-align: center;
     margin-top: 10px;
-    margin-bottom: 40px;
 }
 .header-text-footer
 {
@@ -361,4 +363,8 @@ div.donate
     cursor: pointer;
     background-color: rgb(252, 252, 252);
     box-shadow: 0 4px 8px 0 rgba(212, 212, 212, 0.2), 0 15px 15px 0 rgba(138, 138, 138, 0.19);
+}
+
+div.hover-pointer:hover{
+    cursor: pointer
 }

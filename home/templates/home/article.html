@@ -1,5 +1,8 @@
 {% extends 'home/base.html' %}
 {% load static from staticfiles %}
+{% block description %} {{article.text|truncatechars:100}} {% endblock %}
+{% block keywords %}{{article.text|truncatechars:100}}{% endblock %}
+{% block title %}{{ article.title }}{% endblock %}
     {% block content %}
     <!-- ##### Post Details Area Start ##### -->
         <nav aria-label="breadcrumb" >

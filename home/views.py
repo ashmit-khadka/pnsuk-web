@@ -138,6 +138,10 @@ def events_past(request):
 
 def events(request):    
 
+    title = 'Upcoming Events'
+    heading = 'Our upcoming meetings, parties and gatherings.'
+
+
     events = Event.objects.raw(
         """
         SELECT * 
@@ -148,6 +152,8 @@ def events(request):
     ) 
     context = {
         'events' : events,
+        'title' : title,
+        'heading' : heading
     }
     return render(request, 'home/events_upcoming.html', context)
 
@@ -188,7 +194,10 @@ def minutes(request):
     minutes = paginator.get_page(page)
 
     context = {
-        'minutes': minutes,    }
+        'minutes': minutes,
+        'title' : title,
+        'heading' : heading
+    }
     return render(request, 'home/minutes.html', context)
 
 def openArticle(request, article, article_type):
